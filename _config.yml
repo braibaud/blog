@@ -7,7 +7,7 @@
 # https://learnxinyminutes.com/docs/yaml/
 
 title: The Blue Notebooks
-description: A collection of notebooks from my research projects.
+description: A collection of notebooks from my personal research projects.
 github_username: braibaud
 # you can comment the below line out if your repo name is not different than your baseurl
 github_repo: "blog"
@@ -59,6 +59,11 @@ show_tags: true
 
 # Add your Google Analytics ID here if you have one and want to use it
 google_analytics: 
+
+# Commenting on blog posts is powered by Utterances, an open-source and ad-free way of implementing comments. 
+# All comments are stored in issues on your blog's GitHub repo. You can turn this on setting comments to true. 
+# This defaults to false.
+comments: true
 
 exclude:
   - docker-compose.yml
