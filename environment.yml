@@ -1,0 +1,22 @@
+name: blog-env
+channels:
+  - anaconda
+  - conda-forge
+  - defaults
+dependencies:
+  - numpy
+  - pandas
+  - tensorflow-gpu
+  - tensorflow-hub
+  - keras-tuner
+  - scikit-learn
+  - scikit-optimize
+  - scikit-image
+  - matplotlib
+  - seaborn
+  - pillow
+  - pip
+  - statsmodels
+  - ipykernel
+  - pip:
+    - mlviz
