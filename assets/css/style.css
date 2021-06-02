@@ -425,7 +425,7 @@ pre code { font-size: 15px !important; }
 
 /*-----------------------------------*/
 /*----- ADD YOUR STYLES BELOW -------*/
-.post img { display: block; vertical-align: top; margin-left: auto; margin-right: auto; aspect-ratio: initial !important; }
+.post img { display: block; vertical-align: top; margin-left: auto; margin-right: auto; aspect-ratio: initial; height: auto; }
 
 .language-python + .language-plaintext { border-left: 1px solid grey; margin-left: 1rem !important; }
 

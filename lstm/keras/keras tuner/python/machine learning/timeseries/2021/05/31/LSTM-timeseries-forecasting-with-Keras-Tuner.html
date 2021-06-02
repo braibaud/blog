@@ -78,7 +78,7 @@ window.onload = wrap_img;
        • <span class="read-time" title="Estimated read time">
     
     
-      18 min read
+      9 min read
     
 </span></p>
 
@@ -389,7 +389,7 @@ window.onload = wrap_img;
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Reset the predefined matplotlib style:</p>
+<p>Reset the predefined <code>matplotlib</code> style:</p>
 
 </div>
 </div>
@@ -414,7 +414,7 @@ window.onload = wrap_img;
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Here is the color palette of this project:</p>
+<p>Here is the <strong>color palette</strong> we'll use for the project:</p>
 
 </div>
 </div>
@@ -455,7 +455,7 @@ window.onload = wrap_img;
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Let's capture all the usefull project's parameters in a dictionary:</p>
+<p>Let's capture all the usefull project's <strong>parameters</strong> in a dictionary:</p>
 
 </div>
 </div>
@@ -513,9 +513,6 @@ window.onload = wrap_img;
     
     
 <div class="cell border-box-sizing code_cell rendered">
-<details class="description">
-      <summary class="btn btn-sm" data-open="Hide Code" data-close="Show Code"></summary>
-        <p></p>
 <div class="input">
 
 <div class="inner_cell">
@@ -559,7 +556,6 @@ window.onload = wrap_img;
 </div>
 </div>
 
-    </details>
 <div class="output_wrapper">
 <div class="output">
 
@@ -1010,11 +1006,13 @@ y_test.shape: (52, 13, 1)
     <span class="n">title</span><span class="o">=</span><span class="s1">'timeseries visualization'</span><span class="p">,</span>
     <span class="n">subtitle</span><span class="o">=</span><span class="s1">'data preparation'</span><span class="p">,</span>
     <span class="n">name</span><span class="o">=</span><span class="p">(</span><span class="s1">'Input - Data Visualization</span><span class="si">{0}</span><span class="s1">'</span> <span class="o">+</span> 
-          <span class="s1">'Training - </span><span class="si">{1}</span><span class="s1"> weeks</span><span class="si">{0}</span><span class="s1">'</span> <span class="o">+</span>
-          <span class="s1">'Testing - </span><span class="si">{2}</span><span class="s1"> weeks'</span><span class="p">)</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+          <span class="s1">'Training - </span><span class="si">{1}</span><span class="s1"> weeks (</span><span class="si">{2}</span><span class="s1"> samples)</span><span class="si">{0}</span><span class="s1">'</span> <span class="o">+</span>
+          <span class="s1">'Testing - </span><span class="si">{3}</span><span class="s1"> weeks (</span><span class="si">{4}</span><span class="s1"> samples)'</span><span class="p">)</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
             <span class="s1">'</span><span class="se">\n</span><span class="s1">'</span><span class="p">,</span>
              <span class="n">df_train</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> 
-             <span class="n">df_test</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span>
+             <span class="n">X_train</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+             <span class="n">df_test</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+             <span class="n">X_test</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span>
     <span class="n">training</span><span class="o">=</span><span class="n">df_train</span><span class="p">,</span>
     <span class="n">testing</span><span class="o">=</span><span class="n">df_test</span><span class="p">,</span>
     <span class="n">ylabel</span><span class="o">=</span><span class="s1">'feature value (y)'</span><span class="p">,</span>
@@ -1301,27 +1299,13 @@ y_test.shape: (52, 13, 1)
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">tuner</span> <span class="o">=</span> <span class="n">ktt</span><span class="o">.</span><span class="n">Hyperband</span><span class="p">(</span>
     <span class="n">build_model</span><span class="p">,</span>
     <span class="n">project_name</span><span class="o">=</span><span class="n">params</span><span class="p">[</span><span class="s1">'experiment_name'</span><span class="p">],</span>
-    <span class="n">directory</span><span class="o">=</span><span class="s1">'tuner'</span><span class="p">,</span>
+    <span class="n">directory</span><span class="o">=</span><span class="s1">'.tuner'</span><span class="p">,</span>
     <span class="n">objective</span><span class="o">=</span><span class="s1">'val_loss'</span><span class="p">,</span>
     <span class="n">hyperband_iterations</span><span class="o">=</span><span class="n">params</span><span class="p">[</span><span class="s1">'hyperband_iterations'</span><span class="p">],</span>
     <span class="n">max_epochs</span><span class="o">=</span><span class="n">params</span><span class="p">[</span><span class="s1">'max_epochs'</span><span class="p">])</span>
 </pre></div>
 
     </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="output_area">
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>INFO:tensorflow:Reloading Oracle from existing project tuner\2021-05-31-LSTM timeseries forecasting with Keras Tuner-DATA\oracle.json
-</pre>
-</div>
-</div>
-
 </div>
 </div>
 
@@ -1402,513 +1386,13 @@ y_test.shape: (52, 13, 1)
 <div class="output_area">
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>Trial 21 Complete [00h 00m 25s]
-val_loss: 0.32179614901542664
+<pre>Trial 762 Complete [00h 01m 17s]
+val_loss: 0.18844160437583923
 
-Best val_loss So Far: 0.32179614901542664
-Total elapsed time: 00h 09m 36s
-
-Search: Running Trial #22
-
-Hyperparameter    |Value             |Best Value So Far 
-lstm_1_kernel_r...|0.00017755        |7.8621e-05        
-lstm_1_bias_reg...|3.5029e-05        |1.6744e-05        
-lstm_1_units      |100               |76                
-lstm_1_dropout    |0.4               |0.3               
-lstm_2_kernel_r...|0.00011003        |0.00018485        
-lstm_2_bias_reg...|0.00087325        |1.1831e-05        
-lstm_2_units      |68                |80                
-lstm_2_dropout    |0.3               |0.3               
-dense_dropout     |0.5               |0.4               
-dense_3_kernel_...|0.00015975        |2.1419e-05        
-dense_3_bias_re...|8.3077e-05        |0.00053076        
-dense_3_units     |160               |192               
-dense_2_kernel_...|0.00018244        |2.7891e-05        
-dense_2_bias_re...|3.6558e-05        |6.1412e-05        
-dense_2_units     |108               |90                
-dense_1_kernel_...|1.9305e-05        |0.00049548        
-dense_1_bias_re...|1.1297e-05        |0.00048274        
-dense_1_units     |48                |40                
-dense_0_kernel_...|2.1682e-05        |0.00022316        
-dense_0_bias_re...|2.5726e-05        |0.00016235        
-dense_0_units     |14                |16                
-dense_output_ke...|3.7152e-05        |0.0002189         
-dense_output_bi...|1.0035e-05        |0.00019091        
-learning_rate     |1.2916e-05        |2.7611e-05        
-tuner/epochs      |2                 |2                 
-tuner/initial_e...|0                 |0                 
-tuner/bracket     |4                 |4                 
-tuner/round       |0                 |0                 
-
-Epoch 1/2
+Best val_loss So Far: 0.16335302591323853
+Total elapsed time: 05h 54m 55s
+INFO:tensorflow:Oracle triggered exit
 </pre>
-</div>
-</div>
-
-<div class="output_area">
-
-<div class="output_subarea output_text output_error">
-<pre>
-<span class="ansi-red-intense-fg ansi-bold">---------------------------------------------------------------------------</span>
-<span class="ansi-red-intense-fg ansi-bold">InvalidArgumentError</span>                      Traceback (most recent call last)
-<span class="ansi-green-intense-fg ansi-bold">~\anaconda3\envs\blog-env\lib\site-packages\tensorflow\python\framework\ops.py</span> in <span class="ansi-cyan-fg">get_attr</span><span class="ansi-blue-intense-fg ansi-bold">(self, name)</span>
-<span class="ansi-green-fg">   2485</span>       <span class="ansi-green-intense-fg ansi-bold">with</span> c_api_util<span class="ansi-yellow-intense-fg ansi-bold">.</span>tf_buffer<span class="ansi-yellow-intense-fg ansi-bold">(</span><span class="ansi-yellow-intense-fg ansi-bold">)</span> <span class="ansi-green-intense-fg ansi-bold">as</span> buf<span class="ansi-yellow-intense-fg ansi-bold">:</span>
-<span class="ansi-green-intense-fg ansi-bold">-&gt; 2486</span><span class="ansi-yellow-intense-fg ansi-bold">         </span>pywrap_tf_session<span class="ansi-yellow-intense-fg ansi-bold">.</span>TF_OperationGetAttrValueProto<span class="ansi-yellow-intense-fg ansi-bold">(</span>self<span class="ansi-yellow-intense-fg ansi-bold">.</span>_c_op<span class="ansi-yellow-intense-fg ansi-bold">,</span> name<span class="ansi-yellow-intense-fg ansi-bold">,</span> buf<span class="ansi-yellow-intense-fg ansi-bold">)</span>
-<span class="ansi-green-fg">   2487</span>         data <span class="ansi-yellow-intense-fg ansi-bold">=</span> pywrap_tf_session<span class="ansi-yellow-intense-fg ansi-bold">.</span>TF_GetBuffer<span class="ansi-yellow-intense-fg ansi-bold">(</span>buf<span class="ansi-yellow-intense-fg ansi-bold">)</span>
-
-<span class="ansi-red-intense-fg ansi-bold">InvalidArgumentError</span>: Operation 'split_1' has no attr named '_XlaCompile'.
-
-During handling of the above exception, another exception occurred:
-
-<span class="ansi-red-intense-fg ansi-bold">ValueError</span>                                Traceback (most recent call last)
-<span class="ansi-green-intense-fg ansi-bold">~\anaconda3\envs\blog-env\lib\site-packages\tensorflow\python\ops\gradients_util.py</span> in <span class="ansi-cyan-fg">_MaybeCompile</span><span class="ansi-blue-intense-fg ansi-bold">(scope, op, func, grad_fn)</span>
-<span class="ansi-green-fg">    330</span>     <span class="ansi-green-intense-fg ansi-bold">try</span><span class="ansi-yellow-intense-fg ansi-bold">:</span>
-<span class="ansi-green-intense-fg ansi-bold">--&gt; 331</span><span class="ansi-yellow-intense-fg ansi-bold">       </span>xla_compile <span class="ansi-yellow-intense-fg ansi-bold">=</span> op<span class="ansi-yellow-intense-fg ansi-bold">.</span>get_attr<span class="ansi-yellow-intense-fg ansi-bold">(</span><span class="ansi-blue-intense-fg ansi-bold">"_XlaCompile"</span><span class="ansi-yellow-intense-fg ansi-bold">)</span>
-<span class="ansi-green-fg">    332</span>       xla_separate_compiled_gradients = op.get_attr(
-
-<span class="ansi-green-intense-fg ansi-bold">~\anaconda3\envs\blog-env\lib\site-packages\tensorflow\python\framework\ops.py</span> in <span class="ansi-cyan-fg">get_attr</span><span class="ansi-blue-intense-fg ansi-bold">(self, name)</span>
-<span class="ansi-green-fg">   2489</span>       <span class="ansi-red-intense-fg ansi-bold"># Convert to ValueError for backwards compatibility.</span>
-<span class="ansi-green-intense-fg ansi-bold">-&gt; 2490</span><span class="ansi-yellow-intense-fg ansi-bold">       </span><span class="ansi-green-intense-fg ansi-bold">raise</span> ValueError<span class="ansi-yellow-intense-fg ansi-bold">(</span>str<span class="ansi-yellow-intense-fg ansi-bold">(</span>e<span class="ansi-yellow-intense-fg ansi-bold">)</span><span class="ansi-yellow-intense-fg ansi-bold">)</span>
-<span class="ansi-green-fg">   2491</span>     x <span class="ansi-yellow-intense-fg ansi-bold">=</span> attr_value_pb2<span class="ansi-yellow-intense-fg ansi-bold">.</span>AttrValue<span class="ansi-yellow-intense-fg ansi-bold">(</span><span class="ansi-yellow-intense-fg ansi-bold">)</span>
-
-<span class="ansi-red-intense-fg ansi-bold">ValueError</span>: Operation 'split_1' has no attr named '_XlaCompile'.
-
-During handling of the above exception, another exception occurred:
-
-<span class="ansi-red-intense-fg ansi-bold">KeyboardInterrupt</span>                         Traceback (most recent call last)
-<span class="ansi-green-intense-fg ansi-bold">&lt;ipython-input-26-1e077e1cd88c&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span>
-<span class="ansi-green-fg">     16</span>         kc<span class="ansi-yellow-intense-fg ansi-bold">.</span>TerminateOnNaN<span class="ansi-yellow-intense-fg ansi-bold">(</span><span class="ansi-yellow-intense-fg ansi-bold">)</span>
-<span class="ansi-green-fg">     17</span>     ],
-<span class="ansi-green-intense-fg ansi-bold">---&gt; 18</span><span class="ansi-yellow-intense-fg ansi-bold">     verbose=2)
-</span>
-<span class="ansi-green-intense-fg ansi-bold">~\anaconda3\envs\blog-env\lib\site-packages\kerastuner\engine\base_tuner.py</span> in <span class="ansi-cyan-fg">search</span><span class="ansi-blue-intense-fg ansi-bold">(self, *fit_args, **fit_kwargs)</span>
-<span class="ansi-green-fg">    129</span> 
-<span class="ansi-green-fg">    130</span>             self<span class="ansi-yellow-intense-fg ansi-bold">.</span>on_trial_begin<span class="ansi-yellow-intense-fg ansi-bold">(</span>trial<span class="ansi-yellow-intense-fg ansi-bold">)</span>
-<span class="ansi-green-intense-fg ansi-bold">--&gt; 131</span><span class="ansi-yellow-intense-fg ansi-bold">             </span>self<span class="ansi-yellow-intense-fg ansi-bold">.</span>run_trial<span class="ansi-yellow-intense-fg ansi-bold">(</span>trial<span class="ansi-yellow-intense-fg ansi-bold">,</span> <span class="ansi-yellow-intense-fg ansi-bold">*</span>fit_args<span class="ansi-yellow-intense-fg ansi-bold">,</span> <span class="ansi-yellow-intense-fg ansi-bold">**</span>fit_kwargs<span class="ansi-yellow-intense-fg ansi-bold">)</span>
-<span class="ansi-green-fg">    132</span>             self<span class="ansi-yellow-intense-fg ansi-bold">.</span>on_trial_end<span class="ansi-yellow-intense-fg ansi-bold">(</span>trial<span class="ansi-yellow-intense-fg ansi-bold">)</span>
-<span class="ansi-green-fg">    133</span>         self<span class="ansi-yellow-intense-fg ansi-bold">.</span>on_search_end<span class="ansi-yellow-intense-fg ansi-bold">(</span><span class="ansi-yellow-intense-fg ansi-bold">)</span>
-
-<span class="ansi-green-intense-fg ansi-bold">~\anaconda3\envs\blog-env\lib\site-packages\kerastuner\tuners\hyperband.py</span> in <span class="ansi-cyan-fg">run_trial</span><span class="ansi-blue-intense-fg ansi-bold">(self, trial, *fit_args, **fit_kwargs)</span>
-<span class="ansi-green-fg">    352</span>             fit_kwargs<span class="ansi-yellow-intense-fg ansi-bold">[</span><span class="ansi-blue-intense-fg ansi-bold">'epochs'</span><span class="ansi-yellow-intense-fg ansi-bold">]</span> <span class="ansi-yellow-intense-fg ansi-bold">=</span> hp<span class="ansi-yellow-intense-fg ansi-bold">.</span>values<span class="ansi-yellow-intense-fg ansi-bold">[</span><span class="ansi-blue-intense-fg ansi-bold">'tuner/epochs'</span><span class="ansi-yellow-intense-fg ansi-bold">]</span>
-<span class="ansi-green-fg">    353</span>             fit_kwargs<span class="ansi-yellow-intense-fg ansi-bold">[</span><span class="ansi-blue-intense-fg ansi-bold">'initial_epoch'</span><span class="ansi-yellow-intense-fg ansi-bold">]</span> <span class="ansi-yellow-intense-fg ansi-bold">=</span> hp<span class="ansi-yellow-intense-fg ansi-bold">.</span>values<span class="ansi-yellow-intense-fg ansi-bold">[</span><span class="ansi-blue-intense-fg ansi-bold">'tuner/initial_epoch'</span><span class="ansi-yellow-intense-fg ansi-bold">]</span>
-<span class="ansi-green-intense-fg ansi-bold">--&gt; 354</span><span class="ansi-yellow-intense-fg ansi-bold">         </span>super<span class="ansi-yellow-intense-fg ansi-bold">(</span>Hyperband<span class="ansi-yellow-intense-fg ansi-bold">,</span> self<span class="ansi-yellow-intense-fg ansi-bold">)</span><span class="ansi-yellow-intense-fg ansi-bold">.</span>run_trial<span class="ansi-yellow-intense-fg ansi-bold">(</span>trial<span class="ansi-yellow-intense-fg ansi-bold">,</span> <span class="ansi-yellow-intense-fg ansi-bold">*</span>fit_args<span class="ansi-yellow-intense-fg ansi-bold">,</span> <span class="ansi-yellow-intense-fg ansi-bold">**</span>fit_kwargs<span class="ansi-yellow-intense-fg ansi-bold">)</span>
-<span class="ansi-green-fg">    355</span> 
-<span class="ansi-green-fg">    356</span>     <span class="ansi-green-intense-fg ansi-bold">def</span> _build_model<span class="ansi-yellow-intense-fg ansi-bold">(</span>self<span class="ansi-yellow-intense-fg ansi-bold">,</span> hp<span class="ansi-yellow-intense-fg ansi-bold">)</span><span class="ansi-yellow-intense-fg ansi-bold">:</span>
-
-<span class="ansi-green-intense-fg ansi-bold">~\anaconda3\envs\blog-env\lib\site-packages\kerastuner\engine\multi_execution_tuner.py</span> in <span class="ansi-cyan-fg">run_trial</span><span class="ansi-blue-intense-fg ansi-bold">(self, trial, *fit_args, **fit_kwargs)</span>
-<span class="ansi-green-fg">     94</span>             copied_fit_kwargs<span class="ansi-yellow-intense-fg ansi-bold">[</span><span class="ansi-blue-intense-fg ansi-bold">'callbacks'</span><span class="ansi-yellow-intense-fg ansi-bold">]</span> <span class="ansi-yellow-intense-fg ansi-bold">=</span> callbacks
-<span class="ansi-green-fg">     95</span> 
-<span class="ansi-green-intense-fg ansi-bold">---&gt; 96</span><span class="ansi-yellow-intense-fg ansi-bold">             </span>history <span class="ansi-yellow-intense-fg ansi-bold">=</span> self<span class="ansi-yellow-intense-fg ansi-bold">.</span>_build_and_fit_model<span class="ansi-yellow-intense-fg ansi-bold">(</span>trial<span class="ansi-yellow-intense-fg ansi-bold">,</span> fit_args<span class="ansi-yellow-intense-fg ansi-bold">,</span> copied_fit_kwargs<span class="ansi-yellow-intense-fg ansi-bold">)</span>
-<span class="ansi-green-fg">     97</span>             <span class="ansi-green-intense-fg ansi-bold">for</span> metric<span class="ansi-yellow-intense-fg ansi-bold">,</span> epoch_values <span class="ansi-green-intense-fg ansi-bold">in</span> history<span class="ansi-yellow-intense-fg ansi-bold">.</span>history<span class="ansi-yellow-intense-fg ansi-bold">.</span>items<span class="ansi-yellow-intense-fg ansi-bold">(</span><span class="ansi-yellow-intense-fg ansi-bold">)</span><span class="ansi-yellow-intense-fg ansi-bold">:</span>
-<span class="ansi-green-fg">     98</span>                 <span class="ansi-green-intense-fg ansi-bold">if</span> self<span class="ansi-yellow-intense-fg ansi-bold">.</span>oracle<span class="ansi-yellow-intense-fg ansi-bold">.</span>objective<span class="ansi-yellow-intense-fg ansi-bold">.</span>direction <span class="ansi-yellow-intense-fg ansi-bold">==</span> <span class="ansi-blue-intense-fg ansi-bold">'min'</span><span class="ansi-yellow-intense-fg ansi-bold">:</span>
-
-<span class="ansi-green-intense-fg ansi-bold">~\anaconda3\envs\blog-env\lib\site-packages\kerastuner\engine\tuner.py</span> in <span class="ansi-cyan-fg">_build_and_fit_model</span><span class="ansi-blue-intense-fg ansi-bold">(self, trial, fit_args, fit_kwargs)</span>
-<span class="ansi-green-fg">    139</span>         """
-<span class="ansi-green-fg">    140</span>         model <span class="ansi-yellow-intense-fg ansi-bold">=</span> self<span class="ansi-yellow-intense-fg ansi-bold">.</span>hypermodel<span class="ansi-yellow-intense-fg ansi-bold">.</span>build<span class="ansi-yellow-intense-fg ansi-bold">(</span>trial<span class="ansi-yellow-intense-fg ansi-bold">.</span>hyperparameters<span class="ansi-yellow-intense-fg ansi-bold">)</span>
-<span class="ansi-green-intense-fg ansi-bold">--&gt; 141</span><span class="ansi-yellow-intense-fg ansi-bold">         </span><span class="ansi-green-intense-fg ansi-bold">return</span> model<span class="ansi-yellow-intense-fg ansi-bold">.</span>fit<span class="ansi-yellow-intense-fg ansi-bold">(</span><span class="ansi-yellow-intense-fg ansi-bold">*</span>fit_args<span class="ansi-yellow-intense-fg ansi-bold">,</span> <span class="ansi-yellow-intense-fg ansi-bold">**</span>fit_kwargs<span class="ansi-yellow-intense-fg ansi-bold">)</span>
-<span class="ansi-green-fg">    142</span> 
-<span class="ansi-green-fg">    143</span>     <span class="ansi-green-intense-fg ansi-bold">def</span> run_trial<span class="ansi-yellow-intense-fg ansi-bold">(</span>self<span class="ansi-yellow-intense-fg ansi-bold">,</span> trial<span class="ansi-yellow-intense-fg ansi-bold">,</span> <span class="ansi-yellow-intense-fg ansi-bold">*</span>fit_args<span class="ansi-yellow-intense-fg ansi-bold">,</span> <span class="ansi-yellow-intense-fg ansi-bold">**</span>fit_kwargs<span class="ansi-yellow-intense-fg ansi-bold">)</span><span class="ansi-yellow-intense-fg ansi-bold">:</span>
-
-<span class="ansi-green-intense-fg ansi-bold">~\anaconda3\envs\blog-env\lib\site-packages\tensorflow\python\keras\engine\training.py</span> in <span class="ansi-cyan-fg">_method_wrapper</span><span class="ansi-blue-intense-fg ansi-bold">(self, *args, **kwargs)</span>
-<span class="ansi-green-fg">    106</span>   <span class="ansi-green-intense-fg ansi-bold">def</span> _method_wrapper<span class="ansi-yellow-intense-fg ansi-bold">(</span>self<span class="ansi-yellow-intense-fg ansi-bold">,</span> <span class="ansi-yellow-intense-fg ansi-bold">*</span>args<span class="ansi-yellow-intense-fg ansi-bold">,</span> <span class="ansi-yellow-intense-fg ansi-bold">**</span>kwargs<span class="ansi-yellow-intense-fg ansi-bold">)</span><span class="ansi-yellow-intense-fg ansi-bold">:</span>
-<span class="ansi-green-fg">    107</span>     <span class="ansi-green-intense-fg ansi-bold">if</span> <span class="ansi-green-intense-fg ansi-bold">not</span> self<span class="ansi-yellow-intense-fg ansi-bold">.</span>_in_multi_worker_mode<span class="ansi-yellow-intense-fg ansi-bold">(</span><span class="ansi-yellow-intense-fg ansi-bold">)</span><span class="ansi-yellow-intense-fg ansi-bold">:</span>  <span class="ansi-red-intense-fg ansi-bold"># pylint: disable=protected-access</span>
-<span class="ansi-green-intense-fg ansi-bold">--&gt; 108</span><span class="ansi-yellow-intense-fg ansi-bold">       </span><span class="ansi-green-intense-fg ansi-bold">return</span> method<span class="ansi-yellow-intense-fg ansi-bold">(</span>self<span class="ansi-yellow-intense-fg ansi-bold">,</span> <span class="ansi-yellow-intense-fg ansi-bold">*</span>args<span class="ansi-yellow-intense-fg ansi-bold">,</span> <span class="ansi-yellow-intense-fg ansi-bold">**</span>kwargs<span class="ansi-yellow-intense-fg ansi-bold">)</span>
-<span class="ansi-green-fg">    109</span> 
-<span class="ansi-green-fg">    110</span>     <span class="ansi-red-intense-fg ansi-bold"># Running inside `run_distribute_coordinator` already.</span>
-
-<span class="ansi-green-intense-fg ansi-bold">~\anaconda3\envs\blog-env\lib\site-packages\tensorflow\python\keras\engine\training.py</span> in <span class="ansi-cyan-fg">fit</span><span class="ansi-blue-intense-fg ansi-bold">(self, x, y, batch_size, epochs, verbose, callbacks, validation_split, validation_data, shuffle, class_weight, sample_weight, initial_epoch, steps_per_epoch, validation_steps, validation_batch_size, validation_freq, max_queue_size, workers, use_multiprocessing)</span>
-<span class="ansi-green-fg">   1096</span>                 batch_size=batch_size):
-<span class="ansi-green-fg">   1097</span>               callbacks<span class="ansi-yellow-intense-fg ansi-bold">.</span>on_train_batch_begin<span class="ansi-yellow-intense-fg ansi-bold">(</span>step<span class="ansi-yellow-intense-fg ansi-bold">)</span>
-<span class="ansi-green-intense-fg ansi-bold">-&gt; 1098</span><span class="ansi-yellow-intense-fg ansi-bold">               </span>tmp_logs <span class="ansi-yellow-intense-fg ansi-bold">=</span> train_function<span class="ansi-yellow-intense-fg ansi-bold">(</span>iterator<span class="ansi-yellow-intense-fg ansi-bold">)</span>
-<span class="ansi-green-fg">   1099</span>               <span class="ansi-green-intense-fg ansi-bold">if</span> data_handler<span class="ansi-yellow-intense-fg ansi-bold">.</span>should_sync<span class="ansi-yellow-intense-fg ansi-bold">:</span>
-<span class="ansi-green-fg">   1100</span>                 context<span class="ansi-yellow-intense-fg ansi-bold">.</span>async_wait<span class="ansi-yellow-intense-fg ansi-bold">(</span><span class="ansi-yellow-intense-fg ansi-bold">)</span>
-
-<span class="ansi-green-intense-fg ansi-bold">~\anaconda3\envs\blog-env\lib\site-packages\tensorflow\python\eager\def_function.py</span> in <span class="ansi-cyan-fg">__call__</span><span class="ansi-blue-intense-fg ansi-bold">(self, *args, **kwds)</span>
-<span class="ansi-green-fg">    778</span>       <span class="ansi-green-intense-fg ansi-bold">else</span><span class="ansi-yellow-intense-fg ansi-bold">:</span>
-<span class="ansi-green-fg">    779</span>         compiler <span class="ansi-yellow-intense-fg ansi-bold">=</span> <span class="ansi-blue-intense-fg ansi-bold">"nonXla"</span>
-<span class="ansi-green-intense-fg ansi-bold">--&gt; 780</span><span class="ansi-yellow-intense-fg ansi-bold">         </span>result <span class="ansi-yellow-intense-fg ansi-bold">=</span> self<span class="ansi-yellow-intense-fg ansi-bold">.</span>_call<span class="ansi-yellow-intense-fg ansi-bold">(</span><span class="ansi-yellow-intense-fg ansi-bold">*</span>args<span class="ansi-yellow-intense-fg ansi-bold">,</span> <span class="ansi-yellow-intense-fg ansi-bold">**</span>kwds<span class="ansi-yellow-intense-fg ansi-bold">)</span>
-<span class="ansi-green-fg">    781</span> 
-<span class="ansi-green-fg">    782</span>       new_tracing_count <span class="ansi-yellow-intense-fg ansi-bold">=</span> self<span class="ansi-yellow-intense-fg ansi-bold">.</span>_get_tracing_count<span class="ansi-yellow-intense-fg ansi-bold">(</span><span class="ansi-yellow-intense-fg ansi-bold">)</span>
-
-<span class="ansi-green-intense-fg ansi-bold">~\anaconda3\envs\blog-env\lib\site-packages\tensorflow\python\eager\def_function.py</span> in <span class="ansi-cyan-fg">_call</span><span class="ansi-blue-intense-fg ansi-bold">(self, *args, **kwds)</span>
-<span class="ansi-green-fg">    838</span>         <span class="ansi-red-intense-fg ansi-bold"># Lifting succeeded, so variables are initialized and we can run the</span>
-<span class="ansi-green-fg">    839</span>         <span class="ansi-red-intense-fg ansi-bold"># stateless function.</span>
-<span class="ansi-green-intense-fg ansi-bold">--&gt; 840</span><span class="ansi-yellow-intense-fg ansi-bold">         </span><span class="ansi-green-intense-fg ansi-bold">return</span> self<span class="ansi-yellow-intense-fg ansi-bold">.</span>_stateless_fn<span class="ansi-yellow-intense-fg ansi-bold">(</span><span class="ansi-yellow-intense-fg ansi-bold">*</span>args<span class="ansi-yellow-intense-fg ansi-bold">,</span> <span class="ansi-yellow-intense-fg ansi-bold">**</span>kwds<span class="ansi-yellow-intense-fg ansi-bold">)</span>
-<span class="ansi-green-fg">    841</span>     <span class="ansi-green-intense-fg ansi-bold">else</span><span class="ansi-yellow-intense-fg ansi-bold">:</span>
-<span class="ansi-green-fg">    842</span>       canon_args<span class="ansi-yellow-intense-fg ansi-bold">,</span> canon_kwds <span class="ansi-yellow-intense-fg ansi-bold">=</span><span class="ansi-red-fg"> </span><span class="ansi-red-fg">\</span>
-
-<span class="ansi-green-intense-fg ansi-bold">~\anaconda3\envs\blog-env\lib\site-packages\tensorflow\python\eager\function.py</span> in <span class="ansi-cyan-fg">__call__</span><span class="ansi-blue-intense-fg ansi-bold">(self, *args, **kwargs)</span>
-<span class="ansi-green-fg">   2826</span>     <span class="ansi-blue-intense-fg ansi-bold">"""Calls a graph function specialized to the inputs."""</span>
-<span class="ansi-green-fg">   2827</span>     <span class="ansi-green-intense-fg ansi-bold">with</span> self<span class="ansi-yellow-intense-fg ansi-bold">.</span>_lock<span class="ansi-yellow-intense-fg ansi-bold">:</span>
-<span class="ansi-green-intense-fg ansi-bold">-&gt; 2828</span><span class="ansi-yellow-intense-fg ansi-bold">       </span>graph_function<span class="ansi-yellow-intense-fg ansi-bold">,</span> args<span class="ansi-yellow-intense-fg ansi-bold">,</span> kwargs <span class="ansi-yellow-intense-fg ansi-bold">=</span> self<span class="ansi-yellow-intense-fg ansi-bold">.</span>_maybe_define_function<span class="ansi-yellow-intense-fg ansi-bold">(</span>args<span class="ansi-yellow-intense-fg ansi-bold">,</span> kwargs<span class="ansi-yellow-intense-fg ansi-bold">)</span>
-<span class="ansi-green-fg">   2829</span>     <span class="ansi-green-intense-fg ansi-bold">return</span> graph_function<span class="ansi-yellow-intense-fg ansi-bold">.</span>_filtered_call<span class="ansi-yellow-intense-fg ansi-bold">(</span>args<span class="ansi-yellow-intense-fg ansi-bold">,</span> kwargs<span class="ansi-yellow-intense-fg ansi-bold">)</span>  <span class="ansi-red-intense-fg ansi-bold"># pylint: disable=protected-access</span>
-<span class="ansi-green-fg">   2830</span> 
-
-<span class="ansi-green-intense-fg ansi-bold">~\anaconda3\envs\blog-env\lib\site-packages\tensorflow\python\eager\function.py</span> in <span class="ansi-cyan-fg">_maybe_define_function</span><span class="ansi-blue-intense-fg ansi-bold">(self, args, kwargs)</span>
-<span class="ansi-green-fg">   3211</span> 
-<span class="ansi-green-fg">   3212</span>       self<span class="ansi-yellow-intense-fg ansi-bold">.</span>_function_cache<span class="ansi-yellow-intense-fg ansi-bold">.</span>missed<span class="ansi-yellow-intense-fg ansi-bold">.</span>add<span class="ansi-yellow-intense-fg ansi-bold">(</span>call_context_key<span class="ansi-yellow-intense-fg ansi-bold">)</span>
-<span class="ansi-green-intense-fg ansi-bold">-&gt; 3213</span><span class="ansi-yellow-intense-fg ansi-bold">       </span>graph_function <span class="ansi-yellow-intense-fg ansi-bold">=</span> self<span class="ansi-yellow-intense-fg ansi-bold">.</span>_create_graph_function<span class="ansi-yellow-intense-fg ansi-bold">(</span>args<span class="ansi-yellow-intense-fg ansi-bold">,</span> kwargs<span class="ansi-yellow-intense-fg ansi-bold">)</span>
-<span class="ansi-green-fg">   3214</span>       self<span class="ansi-yellow-intense-fg ansi-bold">.</span>_function_cache<span class="ansi-yellow-intense-fg ansi-bold">.</span>primary<span class="ansi-yellow-intense-fg ansi-bold">[</span>cache_key<span class="ansi-yellow-intense-fg ansi-bold">]</span> <span class="ansi-yellow-intense-fg ansi-bold">=</span> graph_function
-<span class="ansi-green-fg">   3215</span>       <span class="ansi-green-intense-fg ansi-bold">return</span> graph_function<span class="ansi-yellow-intense-fg ansi-bold">,</span> args<span class="ansi-yellow-intense-fg ansi-bold">,</span> kwargs
-
-<span class="ansi-green-intense-fg ansi-bold">~\anaconda3\envs\blog-env\lib\site-packages\tensorflow\python\eager\function.py</span> in <span class="ansi-cyan-fg">_create_graph_function</span><span class="ansi-blue-intense-fg ansi-bold">(self, args, kwargs, override_flat_arg_shapes)</span>
-<span class="ansi-green-fg">   3073</span>             arg_names<span class="ansi-yellow-intense-fg ansi-bold">=</span>arg_names<span class="ansi-yellow-intense-fg ansi-bold">,</span>
-<span class="ansi-green-fg">   3074</span>             override_flat_arg_shapes<span class="ansi-yellow-intense-fg ansi-bold">=</span>override_flat_arg_shapes<span class="ansi-yellow-intense-fg ansi-bold">,</span>
-<span class="ansi-green-intense-fg ansi-bold">-&gt; 3075</span><span class="ansi-yellow-intense-fg ansi-bold">             capture_by_value=self._capture_by_value),
-</span><span class="ansi-green-fg">   3076</span>         self<span class="ansi-yellow-intense-fg ansi-bold">.</span>_function_attributes<span class="ansi-yellow-intense-fg ansi-bold">,</span>
-<span class="ansi-green-fg">   3077</span>         function_spec<span class="ansi-yellow-intense-fg ansi-bold">=</span>self<span class="ansi-yellow-intense-fg ansi-bold">.</span>function_spec<span class="ansi-yellow-intense-fg ansi-bold">,</span>
-
-<span class="ansi-green-intense-fg ansi-bold">~\anaconda3\envs\blog-env\lib\site-packages\tensorflow\python\framework\func_graph.py</span> in <span class="ansi-cyan-fg">func_graph_from_py_func</span><span class="ansi-blue-intense-fg ansi-bold">(name, python_func, args, kwargs, signature, func_graph, autograph, autograph_options, add_control_dependencies, arg_names, op_return_value, collections, capture_by_value, override_flat_arg_shapes)</span>
-<span class="ansi-green-fg">    984</span>         _<span class="ansi-yellow-intense-fg ansi-bold">,</span> original_func <span class="ansi-yellow-intense-fg ansi-bold">=</span> tf_decorator<span class="ansi-yellow-intense-fg ansi-bold">.</span>unwrap<span class="ansi-yellow-intense-fg ansi-bold">(</span>python_func<span class="ansi-yellow-intense-fg ansi-bold">)</span>
-<span class="ansi-green-fg">    985</span> 
-<span class="ansi-green-intense-fg ansi-bold">--&gt; 986</span><span class="ansi-yellow-intense-fg ansi-bold">       </span>func_outputs <span class="ansi-yellow-intense-fg ansi-bold">=</span> python_func<span class="ansi-yellow-intense-fg ansi-bold">(</span><span class="ansi-yellow-intense-fg ansi-bold">*</span>func_args<span class="ansi-yellow-intense-fg ansi-bold">,</span> <span class="ansi-yellow-intense-fg ansi-bold">**</span>func_kwargs<span class="ansi-yellow-intense-fg ansi-bold">)</span>
-<span class="ansi-green-fg">    987</span> 
-<span class="ansi-green-fg">    988</span>       <span class="ansi-red-intense-fg ansi-bold"># invariant: `func_outputs` contains only Tensors, CompositeTensors,</span>
-
-<span class="ansi-green-intense-fg ansi-bold">~\anaconda3\envs\blog-env\lib\site-packages\tensorflow\python\eager\def_function.py</span> in <span class="ansi-cyan-fg">wrapped_fn</span><span class="ansi-blue-intense-fg ansi-bold">(*args, **kwds)</span>
-<span class="ansi-green-fg">    598</span>         <span class="ansi-red-intense-fg ansi-bold"># __wrapped__ allows AutoGraph to swap in a converted function. We give</span>
-<span class="ansi-green-fg">    599</span>         <span class="ansi-red-intense-fg ansi-bold"># the function a weak reference to itself to avoid a reference cycle.</span>
-<span class="ansi-green-intense-fg ansi-bold">--&gt; 600</span><span class="ansi-yellow-intense-fg ansi-bold">         </span><span class="ansi-green-intense-fg ansi-bold">return</span> weak_wrapped_fn<span class="ansi-yellow-intense-fg ansi-bold">(</span><span class="ansi-yellow-intense-fg ansi-bold">)</span><span class="ansi-yellow-intense-fg ansi-bold">.</span>__wrapped__<span class="ansi-yellow-intense-fg ansi-bold">(</span><span class="ansi-yellow-intense-fg ansi-bold">*</span>args<span class="ansi-yellow-intense-fg ansi-bold">,</span> <span class="ansi-yellow-intense-fg ansi-bold">**</span>kwds<span class="ansi-yellow-intense-fg ansi-bold">)</span>
-<span class="ansi-green-fg">    601</span>     weak_wrapped_fn <span class="ansi-yellow-intense-fg ansi-bold">=</span> weakref<span class="ansi-yellow-intense-fg ansi-bold">.</span>ref<span class="ansi-yellow-intense-fg ansi-bold">(</span>wrapped_fn<span class="ansi-yellow-intense-fg ansi-bold">)</span>
-<span class="ansi-green-fg">    602</span> 
-
-<span class="ansi-green-intense-fg ansi-bold">~\anaconda3\envs\blog-env\lib\site-packages\tensorflow\python\framework\func_graph.py</span> in <span class="ansi-cyan-fg">wrapper</span><span class="ansi-blue-intense-fg ansi-bold">(*args, **kwargs)</span>
-<span class="ansi-green-fg">    967</span>                     recursive<span class="ansi-yellow-intense-fg ansi-bold">=</span><span class="ansi-green-intense-fg ansi-bold">True</span><span class="ansi-yellow-intense-fg ansi-bold">,</span>
-<span class="ansi-green-fg">    968</span>                     optional_features<span class="ansi-yellow-intense-fg ansi-bold">=</span>autograph_options<span class="ansi-yellow-intense-fg ansi-bold">,</span>
-<span class="ansi-green-intense-fg ansi-bold">--&gt; 969</span><span class="ansi-yellow-intense-fg ansi-bold">                     </span>user_requested<span class="ansi-yellow-intense-fg ansi-bold">=</span><span class="ansi-green-intense-fg ansi-bold">True</span><span class="ansi-yellow-intense-fg ansi-bold">,</span>
-<span class="ansi-green-fg">    970</span>                 ))
-<span class="ansi-green-fg">    971</span>           <span class="ansi-green-intense-fg ansi-bold">except</span> Exception <span class="ansi-green-intense-fg ansi-bold">as</span> e<span class="ansi-yellow-intense-fg ansi-bold">:</span>  <span class="ansi-red-intense-fg ansi-bold"># pylint:disable=broad-except</span>
-
-<span class="ansi-green-intense-fg ansi-bold">~\anaconda3\envs\blog-env\lib\site-packages\tensorflow\python\autograph\impl\api.py</span> in <span class="ansi-cyan-fg">converted_call</span><span class="ansi-blue-intense-fg ansi-bold">(f, args, kwargs, caller_fn_scope, options)</span>
-<span class="ansi-green-fg">    594</span>     <span class="ansi-green-intense-fg ansi-bold">try</span><span class="ansi-yellow-intense-fg ansi-bold">:</span>
-<span class="ansi-green-fg">    595</span>       <span class="ansi-green-intense-fg ansi-bold">if</span> kwargs <span class="ansi-green-intense-fg ansi-bold">is</span> <span class="ansi-green-intense-fg ansi-bold">not</span> <span class="ansi-green-intense-fg ansi-bold">None</span><span class="ansi-yellow-intense-fg ansi-bold">:</span>
-<span class="ansi-green-intense-fg ansi-bold">--&gt; 596</span><span class="ansi-yellow-intense-fg ansi-bold">         </span>result <span class="ansi-yellow-intense-fg ansi-bold">=</span> converted_f<span class="ansi-yellow-intense-fg ansi-bold">(</span><span class="ansi-yellow-intense-fg ansi-bold">*</span>effective_args<span class="ansi-yellow-intense-fg ansi-bold">,</span> <span class="ansi-yellow-intense-fg ansi-bold">**</span>kwargs<span class="ansi-yellow-intense-fg ansi-bold">)</span>
-<span class="ansi-green-fg">    597</span>       <span class="ansi-green-intense-fg ansi-bold">else</span><span class="ansi-yellow-intense-fg ansi-bold">:</span>
-<span class="ansi-green-fg">    598</span>         result <span class="ansi-yellow-intense-fg ansi-bold">=</span> converted_f<span class="ansi-yellow-intense-fg ansi-bold">(</span><span class="ansi-yellow-intense-fg ansi-bold">*</span>effective_args<span class="ansi-yellow-intense-fg ansi-bold">)</span>
-
-<span class="ansi-green-intense-fg ansi-bold">~\anaconda3\envs\blog-env\lib\site-packages\tensorflow\python\keras\engine\training.py</span> in <span class="ansi-cyan-fg">tf__train_function</span><span class="ansi-blue-intense-fg ansi-bold">(iterator)</span>
-<span class="ansi-green-fg">     14</span>                 <span class="ansi-green-intense-fg ansi-bold">try</span><span class="ansi-yellow-intense-fg ansi-bold">:</span>
-<span class="ansi-green-fg">     15</span>                     do_return <span class="ansi-yellow-intense-fg ansi-bold">=</span> <span class="ansi-green-intense-fg ansi-bold">True</span>
-<span class="ansi-green-intense-fg ansi-bold">---&gt; 16</span><span class="ansi-yellow-intense-fg ansi-bold">                     </span>retval_ <span class="ansi-yellow-intense-fg ansi-bold">=</span> ag__<span class="ansi-yellow-intense-fg ansi-bold">.</span>converted_call<span class="ansi-yellow-intense-fg ansi-bold">(</span>ag__<span class="ansi-yellow-intense-fg ansi-bold">.</span>ld<span class="ansi-yellow-intense-fg ansi-bold">(</span>step_function<span class="ansi-yellow-intense-fg ansi-bold">)</span><span class="ansi-yellow-intense-fg ansi-bold">,</span> <span class="ansi-yellow-intense-fg ansi-bold">(</span>ag__<span class="ansi-yellow-intense-fg ansi-bold">.</span>ld<span class="ansi-yellow-intense-fg ansi-bold">(</span>self<span class="ansi-yellow-intense-fg ansi-bold">)</span><span class="ansi-yellow-intense-fg ansi-bold">,</span> ag__<span class="ansi-yellow-intense-fg ansi-bold">.</span>ld<span class="ansi-yellow-intense-fg ansi-bold">(</span>iterator<span class="ansi-yellow-intense-fg ansi-bold">)</span><span class="ansi-yellow-intense-fg ansi-bold">)</span><span class="ansi-yellow-intense-fg ansi-bold">,</span> <span class="ansi-green-intense-fg ansi-bold">None</span><span class="ansi-yellow-intense-fg ansi-bold">,</span> fscope<span class="ansi-yellow-intense-fg ansi-bold">)</span>
-<span class="ansi-green-fg">     17</span>                 <span class="ansi-green-intense-fg ansi-bold">except</span><span class="ansi-yellow-intense-fg ansi-bold">:</span>
-<span class="ansi-green-fg">     18</span>                     do_return <span class="ansi-yellow-intense-fg ansi-bold">=</span> <span class="ansi-green-intense-fg ansi-bold">False</span>
-
-<span class="ansi-green-intense-fg ansi-bold">~\anaconda3\envs\blog-env\lib\site-packages\tensorflow\python\autograph\impl\api.py</span> in <span class="ansi-cyan-fg">converted_call</span><span class="ansi-blue-intense-fg ansi-bold">(f, args, kwargs, caller_fn_scope, options)</span>
-<span class="ansi-green-fg">    455</span>   <span class="ansi-green-intense-fg ansi-bold">if</span> conversion<span class="ansi-yellow-intense-fg ansi-bold">.</span>is_in_whitelist_cache<span class="ansi-yellow-intense-fg ansi-bold">(</span>f<span class="ansi-yellow-intense-fg ansi-bold">,</span> options<span class="ansi-yellow-intense-fg ansi-bold">)</span><span class="ansi-yellow-intense-fg ansi-bold">:</span>
-<span class="ansi-green-fg">    456</span>     logging<span class="ansi-yellow-intense-fg ansi-bold">.</span>log<span class="ansi-yellow-intense-fg ansi-bold">(</span><span class="ansi-cyan-intense-fg ansi-bold">2</span><span class="ansi-yellow-intense-fg ansi-bold">,</span> <span class="ansi-blue-intense-fg ansi-bold">'Whitelisted %s: from cache'</span><span class="ansi-yellow-intense-fg ansi-bold">,</span> f<span class="ansi-yellow-intense-fg ansi-bold">)</span>
-<span class="ansi-green-intense-fg ansi-bold">--&gt; 457</span><span class="ansi-yellow-intense-fg ansi-bold">     </span><span class="ansi-green-intense-fg ansi-bold">return</span> _call_unconverted<span class="ansi-yellow-intense-fg ansi-bold">(</span>f<span class="ansi-yellow-intense-fg ansi-bold">,</span> args<span class="ansi-yellow-intense-fg ansi-bold">,</span> kwargs<span class="ansi-yellow-intense-fg ansi-bold">,</span> options<span class="ansi-yellow-intense-fg ansi-bold">,</span> <span class="ansi-green-intense-fg ansi-bold">False</span><span class="ansi-yellow-intense-fg ansi-bold">)</span>
-<span class="ansi-green-fg">    458</span> 
-<span class="ansi-green-fg">    459</span>   <span class="ansi-green-intense-fg ansi-bold">if</span> ag_ctx<span class="ansi-yellow-intense-fg ansi-bold">.</span>control_status_ctx<span class="ansi-yellow-intense-fg ansi-bold">(</span><span class="ansi-yellow-intense-fg ansi-bold">)</span><span class="ansi-yellow-intense-fg ansi-bold">.</span>status <span class="ansi-yellow-intense-fg ansi-bold">==</span> ag_ctx<span class="ansi-yellow-intense-fg ansi-bold">.</span>Status<span class="ansi-yellow-intense-fg ansi-bold">.</span>DISABLED<span class="ansi-yellow-intense-fg ansi-bold">:</span>
-
-<span class="ansi-green-intense-fg ansi-bold">~\anaconda3\envs\blog-env\lib\site-packages\tensorflow\python\autograph\impl\api.py</span> in <span class="ansi-cyan-fg">_call_unconverted</span><span class="ansi-blue-intense-fg ansi-bold">(f, args, kwargs, options, update_cache)</span>
-<span class="ansi-green-fg">    338</span>   <span class="ansi-green-intense-fg ansi-bold">if</span> kwargs <span class="ansi-green-intense-fg ansi-bold">is</span> <span class="ansi-green-intense-fg ansi-bold">not</span> <span class="ansi-green-intense-fg ansi-bold">None</span><span class="ansi-yellow-intense-fg ansi-bold">:</span>
-<span class="ansi-green-fg">    339</span>     <span class="ansi-green-intense-fg ansi-bold">return</span> f<span class="ansi-yellow-intense-fg ansi-bold">(</span><span class="ansi-yellow-intense-fg ansi-bold">*</span>args<span class="ansi-yellow-intense-fg ansi-bold">,</span> <span class="ansi-yellow-intense-fg ansi-bold">**</span>kwargs<span class="ansi-yellow-intense-fg ansi-bold">)</span>
-<span class="ansi-green-intense-fg ansi-bold">--&gt; 340</span><span class="ansi-yellow-intense-fg ansi-bold">   </span><span class="ansi-green-intense-fg ansi-bold">return</span> f<span class="ansi-yellow-intense-fg ansi-bold">(</span><span class="ansi-yellow-intense-fg ansi-bold">*</span>args<span class="ansi-yellow-intense-fg ansi-bold">)</span>
-<span class="ansi-green-fg">    341</span> 
-<span class="ansi-green-fg">    342</span> 
-
-<span class="ansi-green-intense-fg ansi-bold">~\anaconda3\envs\blog-env\lib\site-packages\tensorflow\python\keras\engine\training.py</span> in <span class="ansi-cyan-fg">step_function</span><span class="ansi-blue-intense-fg ansi-bold">(model, iterator)</span>
-<span class="ansi-green-fg">    794</span> 
-<span class="ansi-green-fg">    795</span>       data <span class="ansi-yellow-intense-fg ansi-bold">=</span> next<span class="ansi-yellow-intense-fg ansi-bold">(</span>iterator<span class="ansi-yellow-intense-fg ansi-bold">)</span>
-<span class="ansi-green-intense-fg ansi-bold">--&gt; 796</span><span class="ansi-yellow-intense-fg ansi-bold">       </span>outputs <span class="ansi-yellow-intense-fg ansi-bold">=</span> model<span class="ansi-yellow-intense-fg ansi-bold">.</span>distribute_strategy<span class="ansi-yellow-intense-fg ansi-bold">.</span>run<span class="ansi-yellow-intense-fg ansi-bold">(</span>run_step<span class="ansi-yellow-intense-fg ansi-bold">,</span> args<span class="ansi-yellow-intense-fg ansi-bold">=</span><span class="ansi-yellow-intense-fg ansi-bold">(</span>data<span class="ansi-yellow-intense-fg ansi-bold">,</span><span class="ansi-yellow-intense-fg ansi-bold">)</span><span class="ansi-yellow-intense-fg ansi-bold">)</span>
-<span class="ansi-green-fg">    797</span>       outputs = reduce_per_replica(
-<span class="ansi-green-fg">    798</span>           outputs, self.distribute_strategy, reduction='first')
-
-<span class="ansi-green-intense-fg ansi-bold">~\anaconda3\envs\blog-env\lib\site-packages\tensorflow\python\distribute\distribute_lib.py</span> in <span class="ansi-cyan-fg">run</span><span class="ansi-blue-intense-fg ansi-bold">(***failed resolving arguments***)</span>
-<span class="ansi-green-fg">   1209</span>       fn = autograph.tf_convert(
-<span class="ansi-green-fg">   1210</span>           fn, autograph_ctx.control_status_ctx(), convert_by_default=False)
-<span class="ansi-green-intense-fg ansi-bold">-&gt; 1211</span><span class="ansi-yellow-intense-fg ansi-bold">       </span><span class="ansi-green-intense-fg ansi-bold">return</span> self<span class="ansi-yellow-intense-fg ansi-bold">.</span>_extended<span class="ansi-yellow-intense-fg ansi-bold">.</span>call_for_each_replica<span class="ansi-yellow-intense-fg ansi-bold">(</span>fn<span class="ansi-yellow-intense-fg ansi-bold">,</span> args<span class="ansi-yellow-intense-fg ansi-bold">=</span>args<span class="ansi-yellow-intense-fg ansi-bold">,</span> kwargs<span class="ansi-yellow-intense-fg ansi-bold">=</span>kwargs<span class="ansi-yellow-intense-fg ansi-bold">)</span>
-<span class="ansi-green-fg">   1212</span> 
-<span class="ansi-green-fg">   1213</span>   <span class="ansi-red-intense-fg ansi-bold"># TODO(b/151224785): Remove deprecated alias.</span>
-
-<span class="ansi-green-intense-fg ansi-bold">~\anaconda3\envs\blog-env\lib\site-packages\tensorflow\python\distribute\distribute_lib.py</span> in <span class="ansi-cyan-fg">call_for_each_replica</span><span class="ansi-blue-intense-fg ansi-bold">(self, fn, args, kwargs)</span>
-<span class="ansi-green-fg">   2583</span>       kwargs <span class="ansi-yellow-intense-fg ansi-bold">=</span> <span class="ansi-yellow-intense-fg ansi-bold">{</span><span class="ansi-yellow-intense-fg ansi-bold">}</span>
-<span class="ansi-green-fg">   2584</span>     <span class="ansi-green-intense-fg ansi-bold">with</span> self<span class="ansi-yellow-intense-fg ansi-bold">.</span>_container_strategy<span class="ansi-yellow-intense-fg ansi-bold">(</span><span class="ansi-yellow-intense-fg ansi-bold">)</span><span class="ansi-yellow-intense-fg ansi-bold">.</span>scope<span class="ansi-yellow-intense-fg ansi-bold">(</span><span class="ansi-yellow-intense-fg ansi-bold">)</span><span class="ansi-yellow-intense-fg ansi-bold">:</span>
-<span class="ansi-green-intense-fg ansi-bold">-&gt; 2585</span><span class="ansi-yellow-intense-fg ansi-bold">       </span><span class="ansi-green-intense-fg ansi-bold">return</span> self<span class="ansi-yellow-intense-fg ansi-bold">.</span>_call_for_each_replica<span class="ansi-yellow-intense-fg ansi-bold">(</span>fn<span class="ansi-yellow-intense-fg ansi-bold">,</span> args<span class="ansi-yellow-intense-fg ansi-bold">,</span> kwargs<span class="ansi-yellow-intense-fg ansi-bold">)</span>
-<span class="ansi-green-fg">   2586</span> 
-<span class="ansi-green-fg">   2587</span>   <span class="ansi-green-intense-fg ansi-bold">def</span> _call_for_each_replica<span class="ansi-yellow-intense-fg ansi-bold">(</span>self<span class="ansi-yellow-intense-fg ansi-bold">,</span> fn<span class="ansi-yellow-intense-fg ansi-bold">,</span> args<span class="ansi-yellow-intense-fg ansi-bold">,</span> kwargs<span class="ansi-yellow-intense-fg ansi-bold">)</span><span class="ansi-yellow-intense-fg ansi-bold">:</span>
-
-<span class="ansi-green-intense-fg ansi-bold">~\anaconda3\envs\blog-env\lib\site-packages\tensorflow\python\distribute\distribute_lib.py</span> in <span class="ansi-cyan-fg">_call_for_each_replica</span><span class="ansi-blue-intense-fg ansi-bold">(self, fn, args, kwargs)</span>
-<span class="ansi-green-fg">   2943</span>         self<span class="ansi-yellow-intense-fg ansi-bold">.</span>_container_strategy<span class="ansi-yellow-intense-fg ansi-bold">(</span><span class="ansi-yellow-intense-fg ansi-bold">)</span><span class="ansi-yellow-intense-fg ansi-bold">,</span>
-<span class="ansi-green-fg">   2944</span>         replica_id_in_sync_group=constant_op.constant(0, dtypes.int32)):
-<span class="ansi-green-intense-fg ansi-bold">-&gt; 2945</span><span class="ansi-yellow-intense-fg ansi-bold">       </span><span class="ansi-green-intense-fg ansi-bold">return</span> fn<span class="ansi-yellow-intense-fg ansi-bold">(</span><span class="ansi-yellow-intense-fg ansi-bold">*</span>args<span class="ansi-yellow-intense-fg ansi-bold">,</span> <span class="ansi-yellow-intense-fg ansi-bold">**</span>kwargs<span class="ansi-yellow-intense-fg ansi-bold">)</span>
-<span class="ansi-green-fg">   2946</span> 
-<span class="ansi-green-fg">   2947</span>   <span class="ansi-green-intense-fg ansi-bold">def</span> _reduce_to<span class="ansi-yellow-intense-fg ansi-bold">(</span>self<span class="ansi-yellow-intense-fg ansi-bold">,</span> reduce_op<span class="ansi-yellow-intense-fg ansi-bold">,</span> value<span class="ansi-yellow-intense-fg ansi-bold">,</span> destinations<span class="ansi-yellow-intense-fg ansi-bold">,</span> experimental_hints<span class="ansi-yellow-intense-fg ansi-bold">)</span><span class="ansi-yellow-intense-fg ansi-bold">:</span>
-
-<span class="ansi-green-intense-fg ansi-bold">~\anaconda3\envs\blog-env\lib\site-packages\tensorflow\python\autograph\impl\api.py</span> in <span class="ansi-cyan-fg">wrapper</span><span class="ansi-blue-intense-fg ansi-bold">(*args, **kwargs)</span>
-<span class="ansi-green-fg">    253</span>       <span class="ansi-green-intense-fg ansi-bold">try</span><span class="ansi-yellow-intense-fg ansi-bold">:</span>
-<span class="ansi-green-fg">    254</span>         <span class="ansi-green-intense-fg ansi-bold">with</span> conversion_ctx<span class="ansi-yellow-intense-fg ansi-bold">:</span>
-<span class="ansi-green-intense-fg ansi-bold">--&gt; 255</span><span class="ansi-yellow-intense-fg ansi-bold">           </span><span class="ansi-green-intense-fg ansi-bold">return</span> converted_call<span class="ansi-yellow-intense-fg ansi-bold">(</span>f<span class="ansi-yellow-intense-fg ansi-bold">,</span> args<span class="ansi-yellow-intense-fg ansi-bold">,</span> kwargs<span class="ansi-yellow-intense-fg ansi-bold">,</span> options<span class="ansi-yellow-intense-fg ansi-bold">=</span>options<span class="ansi-yellow-intense-fg ansi-bold">)</span>
-<span class="ansi-green-fg">    256</span>       <span class="ansi-green-intense-fg ansi-bold">except</span> Exception <span class="ansi-green-intense-fg ansi-bold">as</span> e<span class="ansi-yellow-intense-fg ansi-bold">:</span>  <span class="ansi-red-intense-fg ansi-bold"># pylint:disable=broad-except</span>
-<span class="ansi-green-fg">    257</span>         <span class="ansi-green-intense-fg ansi-bold">if</span> hasattr<span class="ansi-yellow-intense-fg ansi-bold">(</span>e<span class="ansi-yellow-intense-fg ansi-bold">,</span> <span class="ansi-blue-intense-fg ansi-bold">'ag_error_metadata'</span><span class="ansi-yellow-intense-fg ansi-bold">)</span><span class="ansi-yellow-intense-fg ansi-bold">:</span>
-
-<span class="ansi-green-intense-fg ansi-bold">~\anaconda3\envs\blog-env\lib\site-packages\tensorflow\python\autograph\impl\api.py</span> in <span class="ansi-cyan-fg">converted_call</span><span class="ansi-blue-intense-fg ansi-bold">(f, args, kwargs, caller_fn_scope, options)</span>
-<span class="ansi-green-fg">    530</span> 
-<span class="ansi-green-fg">    531</span>   <span class="ansi-green-intense-fg ansi-bold">if</span> <span class="ansi-green-intense-fg ansi-bold">not</span> options<span class="ansi-yellow-intense-fg ansi-bold">.</span>user_requested <span class="ansi-green-intense-fg ansi-bold">and</span> conversion<span class="ansi-yellow-intense-fg ansi-bold">.</span>is_whitelisted<span class="ansi-yellow-intense-fg ansi-bold">(</span>f<span class="ansi-yellow-intense-fg ansi-bold">)</span><span class="ansi-yellow-intense-fg ansi-bold">:</span>
-<span class="ansi-green-intense-fg ansi-bold">--&gt; 532</span><span class="ansi-yellow-intense-fg ansi-bold">     </span><span class="ansi-green-intense-fg ansi-bold">return</span> _call_unconverted<span class="ansi-yellow-intense-fg ansi-bold">(</span>f<span class="ansi-yellow-intense-fg ansi-bold">,</span> args<span class="ansi-yellow-intense-fg ansi-bold">,</span> kwargs<span class="ansi-yellow-intense-fg ansi-bold">,</span> options<span class="ansi-yellow-intense-fg ansi-bold">)</span>
-<span class="ansi-green-fg">    533</span> 
-<span class="ansi-green-fg">    534</span>   <span class="ansi-red-intense-fg ansi-bold"># internal_convert_user_code is for example turned off when issuing a dynamic</span>
-
-<span class="ansi-green-intense-fg ansi-bold">~\anaconda3\envs\blog-env\lib\site-packages\tensorflow\python\autograph\impl\api.py</span> in <span class="ansi-cyan-fg">_call_unconverted</span><span class="ansi-blue-intense-fg ansi-bold">(f, args, kwargs, options, update_cache)</span>
-<span class="ansi-green-fg">    337</span> 
-<span class="ansi-green-fg">    338</span>   <span class="ansi-green-intense-fg ansi-bold">if</span> kwargs <span class="ansi-green-intense-fg ansi-bold">is</span> <span class="ansi-green-intense-fg ansi-bold">not</span> <span class="ansi-green-intense-fg ansi-bold">None</span><span class="ansi-yellow-intense-fg ansi-bold">:</span>
-<span class="ansi-green-intense-fg ansi-bold">--&gt; 339</span><span class="ansi-yellow-intense-fg ansi-bold">     </span><span class="ansi-green-intense-fg ansi-bold">return</span> f<span class="ansi-yellow-intense-fg ansi-bold">(</span><span class="ansi-yellow-intense-fg ansi-bold">*</span>args<span class="ansi-yellow-intense-fg ansi-bold">,</span> <span class="ansi-yellow-intense-fg ansi-bold">**</span>kwargs<span class="ansi-yellow-intense-fg ansi-bold">)</span>
-<span class="ansi-green-fg">    340</span>   <span class="ansi-green-intense-fg ansi-bold">return</span> f<span class="ansi-yellow-intense-fg ansi-bold">(</span><span class="ansi-yellow-intense-fg ansi-bold">*</span>args<span class="ansi-yellow-intense-fg ansi-bold">)</span>
-<span class="ansi-green-fg">    341</span> 
-
-<span class="ansi-green-intense-fg ansi-bold">~\anaconda3\envs\blog-env\lib\site-packages\tensorflow\python\keras\engine\training.py</span> in <span class="ansi-cyan-fg">run_step</span><span class="ansi-blue-intense-fg ansi-bold">(data)</span>
-<span class="ansi-green-fg">    787</span> 
-<span class="ansi-green-fg">    788</span>       <span class="ansi-green-intense-fg ansi-bold">def</span> run_step<span class="ansi-yellow-intense-fg ansi-bold">(</span>data<span class="ansi-yellow-intense-fg ansi-bold">)</span><span class="ansi-yellow-intense-fg ansi-bold">:</span>
-<span class="ansi-green-intense-fg ansi-bold">--&gt; 789</span><span class="ansi-yellow-intense-fg ansi-bold">         </span>outputs <span class="ansi-yellow-intense-fg ansi-bold">=</span> model<span class="ansi-yellow-intense-fg ansi-bold">.</span>train_step<span class="ansi-yellow-intense-fg ansi-bold">(</span>data<span class="ansi-yellow-intense-fg ansi-bold">)</span>
-<span class="ansi-green-fg">    790</span>         <span class="ansi-red-intense-fg ansi-bold"># Ensure counter is updated only if `train_step` succeeds.</span>
-<span class="ansi-green-fg">    791</span>         <span class="ansi-green-intense-fg ansi-bold">with</span> ops<span class="ansi-yellow-intense-fg ansi-bold">.</span>control_dependencies<span class="ansi-yellow-intense-fg ansi-bold">(</span>_minimum_control_deps<span class="ansi-yellow-intense-fg ansi-bold">(</span>outputs<span class="ansi-yellow-intense-fg ansi-bold">)</span><span class="ansi-yellow-intense-fg ansi-bold">)</span><span class="ansi-yellow-intense-fg ansi-bold">:</span>
-
-<span class="ansi-green-intense-fg ansi-bold">~\anaconda3\envs\blog-env\lib\site-packages\tensorflow\python\keras\engine\training.py</span> in <span class="ansi-cyan-fg">train_step</span><span class="ansi-blue-intense-fg ansi-bold">(self, data)</span>
-<span class="ansi-green-fg">    745</span> 
-<span class="ansi-green-fg">    746</span>     <span class="ansi-green-intense-fg ansi-bold">with</span> backprop<span class="ansi-yellow-intense-fg ansi-bold">.</span>GradientTape<span class="ansi-yellow-intense-fg ansi-bold">(</span><span class="ansi-yellow-intense-fg ansi-bold">)</span> <span class="ansi-green-intense-fg ansi-bold">as</span> tape<span class="ansi-yellow-intense-fg ansi-bold">:</span>
-<span class="ansi-green-intense-fg ansi-bold">--&gt; 747</span><span class="ansi-yellow-intense-fg ansi-bold">       </span>y_pred <span class="ansi-yellow-intense-fg ansi-bold">=</span> self<span class="ansi-yellow-intense-fg ansi-bold">(</span>x<span class="ansi-yellow-intense-fg ansi-bold">,</span> training<span class="ansi-yellow-intense-fg ansi-bold">=</span><span class="ansi-green-intense-fg ansi-bold">True</span><span class="ansi-yellow-intense-fg ansi-bold">)</span>
-<span class="ansi-green-fg">    748</span>       loss = self.compiled_loss(
-<span class="ansi-green-fg">    749</span>           y, y_pred, sample_weight, regularization_losses=self.losses)
-
-<span class="ansi-green-intense-fg ansi-bold">~\anaconda3\envs\blog-env\lib\site-packages\tensorflow\python\keras\engine\base_layer.py</span> in <span class="ansi-cyan-fg">__call__</span><span class="ansi-blue-intense-fg ansi-bold">(self, *args, **kwargs)</span>
-<span class="ansi-green-fg">    983</span> 
-<span class="ansi-green-fg">    984</span>         <span class="ansi-green-intense-fg ansi-bold">with</span> ops<span class="ansi-yellow-intense-fg ansi-bold">.</span>enable_auto_cast_variables<span class="ansi-yellow-intense-fg ansi-bold">(</span>self<span class="ansi-yellow-intense-fg ansi-bold">.</span>_compute_dtype_object<span class="ansi-yellow-intense-fg ansi-bold">)</span><span class="ansi-yellow-intense-fg ansi-bold">:</span>
-<span class="ansi-green-intense-fg ansi-bold">--&gt; 985</span><span class="ansi-yellow-intense-fg ansi-bold">           </span>outputs <span class="ansi-yellow-intense-fg ansi-bold">=</span> call_fn<span class="ansi-yellow-intense-fg ansi-bold">(</span>inputs<span class="ansi-yellow-intense-fg ansi-bold">,</span> <span class="ansi-yellow-intense-fg ansi-bold">*</span>args<span class="ansi-yellow-intense-fg ansi-bold">,</span> <span class="ansi-yellow-intense-fg ansi-bold">**</span>kwargs<span class="ansi-yellow-intense-fg ansi-bold">)</span>
-<span class="ansi-green-fg">    986</span> 
-<span class="ansi-green-fg">    987</span>         <span class="ansi-green-intense-fg ansi-bold">if</span> self<span class="ansi-yellow-intense-fg ansi-bold">.</span>_activity_regularizer<span class="ansi-yellow-intense-fg ansi-bold">:</span>
-
-<span class="ansi-green-intense-fg ansi-bold">~\anaconda3\envs\blog-env\lib\site-packages\tensorflow\python\keras\engine\sequential.py</span> in <span class="ansi-cyan-fg">call</span><span class="ansi-blue-intense-fg ansi-bold">(self, inputs, training, mask)</span>
-<span class="ansi-green-fg">    370</span>       <span class="ansi-green-intense-fg ansi-bold">if</span> <span class="ansi-green-intense-fg ansi-bold">not</span> self<span class="ansi-yellow-intense-fg ansi-bold">.</span>built<span class="ansi-yellow-intense-fg ansi-bold">:</span>
-<span class="ansi-green-fg">    371</span>         self<span class="ansi-yellow-intense-fg ansi-bold">.</span>_init_graph_network<span class="ansi-yellow-intense-fg ansi-bold">(</span>self<span class="ansi-yellow-intense-fg ansi-bold">.</span>inputs<span class="ansi-yellow-intense-fg ansi-bold">,</span> self<span class="ansi-yellow-intense-fg ansi-bold">.</span>outputs<span class="ansi-yellow-intense-fg ansi-bold">)</span>
-<span class="ansi-green-intense-fg ansi-bold">--&gt; 372</span><span class="ansi-yellow-intense-fg ansi-bold">       </span><span class="ansi-green-intense-fg ansi-bold">return</span> super<span class="ansi-yellow-intense-fg ansi-bold">(</span>Sequential<span class="ansi-yellow-intense-fg ansi-bold">,</span> self<span class="ansi-yellow-intense-fg ansi-bold">)</span><span class="ansi-yellow-intense-fg ansi-bold">.</span>call<span class="ansi-yellow-intense-fg ansi-bold">(</span>inputs<span class="ansi-yellow-intense-fg ansi-bold">,</span> training<span class="ansi-yellow-intense-fg ansi-bold">=</span>training<span class="ansi-yellow-intense-fg ansi-bold">,</span> mask<span class="ansi-yellow-intense-fg ansi-bold">=</span>mask<span class="ansi-yellow-intense-fg ansi-bold">)</span>
-<span class="ansi-green-fg">    373</span> 
-<span class="ansi-green-fg">    374</span>     outputs <span class="ansi-yellow-intense-fg ansi-bold">=</span> inputs  <span class="ansi-red-intense-fg ansi-bold"># handle the corner case where self.layers is empty</span>
-
-<span class="ansi-green-intense-fg ansi-bold">~\anaconda3\envs\blog-env\lib\site-packages\tensorflow\python\keras\engine\functional.py</span> in <span class="ansi-cyan-fg">call</span><span class="ansi-blue-intense-fg ansi-bold">(self, inputs, training, mask)</span>
-<span class="ansi-green-fg">    384</span>     """
-<span class="ansi-green-fg">    385</span>     return self._run_internal_graph(
-<span class="ansi-green-intense-fg ansi-bold">--&gt; 386</span><span class="ansi-yellow-intense-fg ansi-bold">         inputs, training=training, mask=mask)
-</span><span class="ansi-green-fg">    387</span> 
-<span class="ansi-green-fg">    388</span>   <span class="ansi-green-intense-fg ansi-bold">def</span> compute_output_shape<span class="ansi-yellow-intense-fg ansi-bold">(</span>self<span class="ansi-yellow-intense-fg ansi-bold">,</span> input_shape<span class="ansi-yellow-intense-fg ansi-bold">)</span><span class="ansi-yellow-intense-fg ansi-bold">:</span>
-
-<span class="ansi-green-intense-fg ansi-bold">~\anaconda3\envs\blog-env\lib\site-packages\tensorflow\python\keras\engine\functional.py</span> in <span class="ansi-cyan-fg">_run_internal_graph</span><span class="ansi-blue-intense-fg ansi-bold">(self, inputs, training, mask)</span>
-<span class="ansi-green-fg">    506</span> 
-<span class="ansi-green-fg">    507</span>         args<span class="ansi-yellow-intense-fg ansi-bold">,</span> kwargs <span class="ansi-yellow-intense-fg ansi-bold">=</span> node<span class="ansi-yellow-intense-fg ansi-bold">.</span>map_arguments<span class="ansi-yellow-intense-fg ansi-bold">(</span>tensor_dict<span class="ansi-yellow-intense-fg ansi-bold">)</span>
-<span class="ansi-green-intense-fg ansi-bold">--&gt; 508</span><span class="ansi-yellow-intense-fg ansi-bold">         </span>outputs <span class="ansi-yellow-intense-fg ansi-bold">=</span> node<span class="ansi-yellow-intense-fg ansi-bold">.</span>layer<span class="ansi-yellow-intense-fg ansi-bold">(</span><span class="ansi-yellow-intense-fg ansi-bold">*</span>args<span class="ansi-yellow-intense-fg ansi-bold">,</span> <span class="ansi-yellow-intense-fg ansi-bold">**</span>kwargs<span class="ansi-yellow-intense-fg ansi-bold">)</span>
-<span class="ansi-green-fg">    509</span> 
-<span class="ansi-green-fg">    510</span>         <span class="ansi-red-intense-fg ansi-bold"># Update tensor_dict.</span>
-
-<span class="ansi-green-intense-fg ansi-bold">~\anaconda3\envs\blog-env\lib\site-packages\tensorflow\python\keras\layers\wrappers.py</span> in <span class="ansi-cyan-fg">__call__</span><span class="ansi-blue-intense-fg ansi-bold">(self, inputs, initial_state, constants, **kwargs)</span>
-<span class="ansi-green-fg">    528</span> 
-<span class="ansi-green-fg">    529</span>     <span class="ansi-green-intense-fg ansi-bold">if</span> initial_state <span class="ansi-green-intense-fg ansi-bold">is</span> <span class="ansi-green-intense-fg ansi-bold">None</span> <span class="ansi-green-intense-fg ansi-bold">and</span> constants <span class="ansi-green-intense-fg ansi-bold">is</span> <span class="ansi-green-intense-fg ansi-bold">None</span><span class="ansi-yellow-intense-fg ansi-bold">:</span>
-<span class="ansi-green-intense-fg ansi-bold">--&gt; 530</span><span class="ansi-yellow-intense-fg ansi-bold">       </span><span class="ansi-green-intense-fg ansi-bold">return</span> super<span class="ansi-yellow-intense-fg ansi-bold">(</span>Bidirectional<span class="ansi-yellow-intense-fg ansi-bold">,</span> self<span class="ansi-yellow-intense-fg ansi-bold">)</span><span class="ansi-yellow-intense-fg ansi-bold">.</span>__call__<span class="ansi-yellow-intense-fg ansi-bold">(</span>inputs<span class="ansi-yellow-intense-fg ansi-bold">,</span> <span class="ansi-yellow-intense-fg ansi-bold">**</span>kwargs<span class="ansi-yellow-intense-fg ansi-bold">)</span>
-<span class="ansi-green-fg">    531</span> 
-<span class="ansi-green-fg">    532</span>     <span class="ansi-red-intense-fg ansi-bold"># Applies the same workaround as in `RNN.__call__`</span>
-
-<span class="ansi-green-intense-fg ansi-bold">~\anaconda3\envs\blog-env\lib\site-packages\tensorflow\python\keras\engine\base_layer.py</span> in <span class="ansi-cyan-fg">__call__</span><span class="ansi-blue-intense-fg ansi-bold">(self, *args, **kwargs)</span>
-<span class="ansi-green-fg">    983</span> 
-<span class="ansi-green-fg">    984</span>         <span class="ansi-green-intense-fg ansi-bold">with</span> ops<span class="ansi-yellow-intense-fg ansi-bold">.</span>enable_auto_cast_variables<span class="ansi-yellow-intense-fg ansi-bold">(</span>self<span class="ansi-yellow-intense-fg ansi-bold">.</span>_compute_dtype_object<span class="ansi-yellow-intense-fg ansi-bold">)</span><span class="ansi-yellow-intense-fg ansi-bold">:</span>
-<span class="ansi-green-intense-fg ansi-bold">--&gt; 985</span><span class="ansi-yellow-intense-fg ansi-bold">           </span>outputs <span class="ansi-yellow-intense-fg ansi-bold">=</span> call_fn<span class="ansi-yellow-intense-fg ansi-bold">(</span>inputs<span class="ansi-yellow-intense-fg ansi-bold">,</span> <span class="ansi-yellow-intense-fg ansi-bold">*</span>args<span class="ansi-yellow-intense-fg ansi-bold">,</span> <span class="ansi-yellow-intense-fg ansi-bold">**</span>kwargs<span class="ansi-yellow-intense-fg ansi-bold">)</span>
-<span class="ansi-green-fg">    986</span> 
-<span class="ansi-green-fg">    987</span>         <span class="ansi-green-intense-fg ansi-bold">if</span> self<span class="ansi-yellow-intense-fg ansi-bold">.</span>_activity_regularizer<span class="ansi-yellow-intense-fg ansi-bold">:</span>
-
-<span class="ansi-green-intense-fg ansi-bold">~\anaconda3\envs\blog-env\lib\site-packages\tensorflow\python\keras\layers\wrappers.py</span> in <span class="ansi-cyan-fg">call</span><span class="ansi-blue-intense-fg ansi-bold">(self, inputs, training, mask, initial_state, constants)</span>
-<span class="ansi-green-fg">    642</span> 
-<span class="ansi-green-fg">    643</span>       y = self.forward_layer(forward_inputs,
-<span class="ansi-green-intense-fg ansi-bold">--&gt; 644</span><span class="ansi-yellow-intense-fg ansi-bold">                              initial_state=forward_state, **kwargs)
-</span><span class="ansi-green-fg">    645</span>       y_rev = self.backward_layer(backward_inputs,
-<span class="ansi-green-fg">    646</span>                                   initial_state=backward_state, **kwargs)
-
-<span class="ansi-green-intense-fg ansi-bold">~\anaconda3\envs\blog-env\lib\site-packages\tensorflow\python\keras\layers\recurrent.py</span> in <span class="ansi-cyan-fg">__call__</span><span class="ansi-blue-intense-fg ansi-bold">(self, inputs, initial_state, constants, **kwargs)</span>
-<span class="ansi-green-fg">    661</span> 
-<span class="ansi-green-fg">    662</span>     <span class="ansi-green-intense-fg ansi-bold">if</span> initial_state <span class="ansi-green-intense-fg ansi-bold">is</span> <span class="ansi-green-intense-fg ansi-bold">None</span> <span class="ansi-green-intense-fg ansi-bold">and</span> constants <span class="ansi-green-intense-fg ansi-bold">is</span> <span class="ansi-green-intense-fg ansi-bold">None</span><span class="ansi-yellow-intense-fg ansi-bold">:</span>
-<span class="ansi-green-intense-fg ansi-bold">--&gt; 663</span><span class="ansi-yellow-intense-fg ansi-bold">       </span><span class="ansi-green-intense-fg ansi-bold">return</span> super<span class="ansi-yellow-intense-fg ansi-bold">(</span>RNN<span class="ansi-yellow-intense-fg ansi-bold">,</span> self<span class="ansi-yellow-intense-fg ansi-bold">)</span><span class="ansi-yellow-intense-fg ansi-bold">.</span>__call__<span class="ansi-yellow-intense-fg ansi-bold">(</span>inputs<span class="ansi-yellow-intense-fg ansi-bold">,</span> <span class="ansi-yellow-intense-fg ansi-bold">**</span>kwargs<span class="ansi-yellow-intense-fg ansi-bold">)</span>
-<span class="ansi-green-fg">    664</span> 
-<span class="ansi-green-fg">    665</span>     <span class="ansi-red-intense-fg ansi-bold"># If any of `initial_state` or `constants` are specified and are Keras</span>
-
-<span class="ansi-green-intense-fg ansi-bold">~\anaconda3\envs\blog-env\lib\site-packages\tensorflow\python\keras\engine\base_layer.py</span> in <span class="ansi-cyan-fg">__call__</span><span class="ansi-blue-intense-fg ansi-bold">(self, *args, **kwargs)</span>
-<span class="ansi-green-fg">    983</span> 
-<span class="ansi-green-fg">    984</span>         <span class="ansi-green-intense-fg ansi-bold">with</span> ops<span class="ansi-yellow-intense-fg ansi-bold">.</span>enable_auto_cast_variables<span class="ansi-yellow-intense-fg ansi-bold">(</span>self<span class="ansi-yellow-intense-fg ansi-bold">.</span>_compute_dtype_object<span class="ansi-yellow-intense-fg ansi-bold">)</span><span class="ansi-yellow-intense-fg ansi-bold">:</span>
-<span class="ansi-green-intense-fg ansi-bold">--&gt; 985</span><span class="ansi-yellow-intense-fg ansi-bold">           </span>outputs <span class="ansi-yellow-intense-fg ansi-bold">=</span> call_fn<span class="ansi-yellow-intense-fg ansi-bold">(</span>inputs<span class="ansi-yellow-intense-fg ansi-bold">,</span> <span class="ansi-yellow-intense-fg ansi-bold">*</span>args<span class="ansi-yellow-intense-fg ansi-bold">,</span> <span class="ansi-yellow-intense-fg ansi-bold">**</span>kwargs<span class="ansi-yellow-intense-fg ansi-bold">)</span>
-<span class="ansi-green-fg">    986</span> 
-<span class="ansi-green-fg">    987</span>         <span class="ansi-green-intense-fg ansi-bold">if</span> self<span class="ansi-yellow-intense-fg ansi-bold">.</span>_activity_regularizer<span class="ansi-yellow-intense-fg ansi-bold">:</span>
-
-<span class="ansi-green-intense-fg ansi-bold">~\anaconda3\envs\blog-env\lib\site-packages\tensorflow\python\keras\layers\recurrent_v2.py</span> in <span class="ansi-cyan-fg">call</span><span class="ansi-blue-intense-fg ansi-bold">(self, inputs, mask, training, initial_state)</span>
-<span class="ansi-green-fg">   1181</span>       <span class="ansi-green-intense-fg ansi-bold">else</span><span class="ansi-yellow-intense-fg ansi-bold">:</span>
-<span class="ansi-green-fg">   1182</span>         (last_output, outputs, new_h, new_c,
-<span class="ansi-green-intense-fg ansi-bold">-&gt; 1183</span><span class="ansi-yellow-intense-fg ansi-bold">          runtime) = lstm_with_backend_selection(**normal_lstm_kwargs)
-</span><span class="ansi-green-fg">   1184</span> 
-<span class="ansi-green-fg">   1185</span>       states <span class="ansi-yellow-intense-fg ansi-bold">=</span> <span class="ansi-yellow-intense-fg ansi-bold">[</span>new_h<span class="ansi-yellow-intense-fg ansi-bold">,</span> new_c<span class="ansi-yellow-intense-fg ansi-bold">]</span>
-
-<span class="ansi-green-intense-fg ansi-bold">~\anaconda3\envs\blog-env\lib\site-packages\tensorflow\python\keras\layers\recurrent_v2.py</span> in <span class="ansi-cyan-fg">lstm_with_backend_selection</span><span class="ansi-blue-intense-fg ansi-bold">(inputs, init_h, init_c, kernel, recurrent_kernel, bias, mask, time_major, go_backwards, sequence_lengths, zero_output_for_mask)</span>
-<span class="ansi-green-fg">   1557</span>   last_output, outputs, new_h, new_c, runtime = defun_standard_lstm(
-<span class="ansi-green-fg">   1558</span>       **params)
-<span class="ansi-green-intense-fg ansi-bold">-&gt; 1559</span><span class="ansi-yellow-intense-fg ansi-bold">   </span>function<span class="ansi-yellow-intense-fg ansi-bold">.</span>register<span class="ansi-yellow-intense-fg ansi-bold">(</span>defun_gpu_lstm<span class="ansi-yellow-intense-fg ansi-bold">,</span> <span class="ansi-yellow-intense-fg ansi-bold">**</span>params<span class="ansi-yellow-intense-fg ansi-bold">)</span>
-<span class="ansi-green-fg">   1560</span> 
-<span class="ansi-green-fg">   1561</span>   <span class="ansi-green-intense-fg ansi-bold">return</span> last_output<span class="ansi-yellow-intense-fg ansi-bold">,</span> outputs<span class="ansi-yellow-intense-fg ansi-bold">,</span> new_h<span class="ansi-yellow-intense-fg ansi-bold">,</span> new_c<span class="ansi-yellow-intense-fg ansi-bold">,</span> runtime
-
-<span class="ansi-green-intense-fg ansi-bold">~\anaconda3\envs\blog-env\lib\site-packages\tensorflow\python\eager\function.py</span> in <span class="ansi-cyan-fg">register</span><span class="ansi-blue-intense-fg ansi-bold">(func, *args, **kwargs)</span>
-<span class="ansi-green-fg">   3239</span>   concrete_func <span class="ansi-yellow-intense-fg ansi-bold">=</span> func<span class="ansi-yellow-intense-fg ansi-bold">.</span>get_concrete_function<span class="ansi-yellow-intense-fg ansi-bold">(</span><span class="ansi-yellow-intense-fg ansi-bold">*</span>args<span class="ansi-yellow-intense-fg ansi-bold">,</span> <span class="ansi-yellow-intense-fg ansi-bold">**</span>kwargs<span class="ansi-yellow-intense-fg ansi-bold">)</span>
-<span class="ansi-green-fg">   3240</span>   concrete_func<span class="ansi-yellow-intense-fg ansi-bold">.</span>add_to_graph<span class="ansi-yellow-intense-fg ansi-bold">(</span><span class="ansi-yellow-intense-fg ansi-bold">)</span>
-<span class="ansi-green-intense-fg ansi-bold">-&gt; 3241</span><span class="ansi-yellow-intense-fg ansi-bold">   </span>concrete_func<span class="ansi-yellow-intense-fg ansi-bold">.</span>add_gradient_functions_to_graph<span class="ansi-yellow-intense-fg ansi-bold">(</span><span class="ansi-yellow-intense-fg ansi-bold">)</span>
-<span class="ansi-green-fg">   3242</span>   <span class="ansi-green-intense-fg ansi-bold">return</span> concrete_func
-<span class="ansi-green-fg">   3243</span> 
-
-<span class="ansi-green-intense-fg ansi-bold">~\anaconda3\envs\blog-env\lib\site-packages\tensorflow\python\eager\function.py</span> in <span class="ansi-cyan-fg">add_gradient_functions_to_graph</span><span class="ansi-blue-intense-fg ansi-bold">(self, g)</span>
-<span class="ansi-green-fg">   2061</span>     self<span class="ansi-yellow-intense-fg ansi-bold">.</span>_delayed_rewrite_functions<span class="ansi-yellow-intense-fg ansi-bold">.</span>forward<span class="ansi-yellow-intense-fg ansi-bold">(</span><span class="ansi-yellow-intense-fg ansi-bold">)</span><span class="ansi-yellow-intense-fg ansi-bold">.</span>add_to_graph<span class="ansi-yellow-intense-fg ansi-bold">(</span>g<span class="ansi-yellow-intense-fg ansi-bold">)</span>
-<span class="ansi-green-fg">   2062</span>     forward_function, backward_function = (
-<span class="ansi-green-intense-fg ansi-bold">-&gt; 2063</span><span class="ansi-yellow-intense-fg ansi-bold">         self._delayed_rewrite_functions.forward_backward())
-</span><span class="ansi-green-fg">   2064</span>     forward_function<span class="ansi-yellow-intense-fg ansi-bold">.</span>add_to_graph<span class="ansi-yellow-intense-fg ansi-bold">(</span>g<span class="ansi-yellow-intense-fg ansi-bold">)</span>
-<span class="ansi-green-fg">   2065</span>     backward_function<span class="ansi-yellow-intense-fg ansi-bold">.</span>add_to_graph<span class="ansi-yellow-intense-fg ansi-bold">(</span>g<span class="ansi-yellow-intense-fg ansi-bold">)</span>
-
-<span class="ansi-green-intense-fg ansi-bold">~\anaconda3\envs\blog-env\lib\site-packages\tensorflow\python\eager\function.py</span> in <span class="ansi-cyan-fg">forward_backward</span><span class="ansi-blue-intense-fg ansi-bold">(self, num_doutputs)</span>
-<span class="ansi-green-fg">    619</span>     <span class="ansi-green-intense-fg ansi-bold">if</span> forward_backward <span class="ansi-green-intense-fg ansi-bold">is</span> <span class="ansi-green-intense-fg ansi-bold">not</span> <span class="ansi-green-intense-fg ansi-bold">None</span><span class="ansi-yellow-intense-fg ansi-bold">:</span>
-<span class="ansi-green-fg">    620</span>       <span class="ansi-green-intense-fg ansi-bold">return</span> forward_backward
-<span class="ansi-green-intense-fg ansi-bold">--&gt; 621</span><span class="ansi-yellow-intense-fg ansi-bold">     </span>forward<span class="ansi-yellow-intense-fg ansi-bold">,</span> backward <span class="ansi-yellow-intense-fg ansi-bold">=</span> self<span class="ansi-yellow-intense-fg ansi-bold">.</span>_construct_forward_backward<span class="ansi-yellow-intense-fg ansi-bold">(</span>num_doutputs<span class="ansi-yellow-intense-fg ansi-bold">)</span>
-<span class="ansi-green-fg">    622</span>     self<span class="ansi-yellow-intense-fg ansi-bold">.</span>_cached_function_pairs<span class="ansi-yellow-intense-fg ansi-bold">[</span>num_doutputs<span class="ansi-yellow-intense-fg ansi-bold">]</span> <span class="ansi-yellow-intense-fg ansi-bold">=</span> <span class="ansi-yellow-intense-fg ansi-bold">(</span>forward<span class="ansi-yellow-intense-fg ansi-bold">,</span> backward<span class="ansi-yellow-intense-fg ansi-bold">)</span>
-<span class="ansi-green-fg">    623</span>     <span class="ansi-green-intense-fg ansi-bold">return</span> forward<span class="ansi-yellow-intense-fg ansi-bold">,</span> backward
-
-<span class="ansi-green-intense-fg ansi-bold">~\anaconda3\envs\blog-env\lib\site-packages\tensorflow\python\eager\function.py</span> in <span class="ansi-cyan-fg">_construct_forward_backward</span><span class="ansi-blue-intense-fg ansi-bold">(self, num_doutputs)</span>
-<span class="ansi-green-fg">    667</span>           args<span class="ansi-yellow-intense-fg ansi-bold">=</span><span class="ansi-yellow-intense-fg ansi-bold">[</span><span class="ansi-yellow-intense-fg ansi-bold">]</span><span class="ansi-yellow-intense-fg ansi-bold">,</span> kwargs<span class="ansi-yellow-intense-fg ansi-bold">=</span><span class="ansi-yellow-intense-fg ansi-bold">{</span><span class="ansi-yellow-intense-fg ansi-bold">}</span><span class="ansi-yellow-intense-fg ansi-bold">,</span>
-<span class="ansi-green-fg">    668</span>           signature<span class="ansi-yellow-intense-fg ansi-bold">=</span>signature<span class="ansi-yellow-intense-fg ansi-bold">,</span>
-<span class="ansi-green-intense-fg ansi-bold">--&gt; 669</span><span class="ansi-yellow-intense-fg ansi-bold">           func_graph=backwards_graph)
-</span><span class="ansi-green-fg">    670</span>       backwards_graph_captures <span class="ansi-yellow-intense-fg ansi-bold">=</span> backwards_graph<span class="ansi-yellow-intense-fg ansi-bold">.</span>external_captures
-<span class="ansi-green-fg">    671</span>       captures_from_forward = [
-
-<span class="ansi-green-intense-fg ansi-bold">~\anaconda3\envs\blog-env\lib\site-packages\tensorflow\python\framework\func_graph.py</span> in <span class="ansi-cyan-fg">func_graph_from_py_func</span><span class="ansi-blue-intense-fg ansi-bold">(name, python_func, args, kwargs, signature, func_graph, autograph, autograph_options, add_control_dependencies, arg_names, op_return_value, collections, capture_by_value, override_flat_arg_shapes)</span>
-<span class="ansi-green-fg">    984</span>         _<span class="ansi-yellow-intense-fg ansi-bold">,</span> original_func <span class="ansi-yellow-intense-fg ansi-bold">=</span> tf_decorator<span class="ansi-yellow-intense-fg ansi-bold">.</span>unwrap<span class="ansi-yellow-intense-fg ansi-bold">(</span>python_func<span class="ansi-yellow-intense-fg ansi-bold">)</span>
-<span class="ansi-green-fg">    985</span> 
-<span class="ansi-green-intense-fg ansi-bold">--&gt; 986</span><span class="ansi-yellow-intense-fg ansi-bold">       </span>func_outputs <span class="ansi-yellow-intense-fg ansi-bold">=</span> python_func<span class="ansi-yellow-intense-fg ansi-bold">(</span><span class="ansi-yellow-intense-fg ansi-bold">*</span>func_args<span class="ansi-yellow-intense-fg ansi-bold">,</span> <span class="ansi-yellow-intense-fg ansi-bold">**</span>func_kwargs<span class="ansi-yellow-intense-fg ansi-bold">)</span>
-<span class="ansi-green-fg">    987</span> 
-<span class="ansi-green-fg">    988</span>       <span class="ansi-red-intense-fg ansi-bold"># invariant: `func_outputs` contains only Tensors, CompositeTensors,</span>
-
-<span class="ansi-green-intense-fg ansi-bold">~\anaconda3\envs\blog-env\lib\site-packages\tensorflow\python\eager\function.py</span> in <span class="ansi-cyan-fg">_backprop_function</span><span class="ansi-blue-intense-fg ansi-bold">(*grad_ys)</span>
-<span class="ansi-green-fg">    657</span>             self<span class="ansi-yellow-intense-fg ansi-bold">.</span>_func_graph<span class="ansi-yellow-intense-fg ansi-bold">.</span>inputs<span class="ansi-yellow-intense-fg ansi-bold">,</span>
-<span class="ansi-green-fg">    658</span>             grad_ys<span class="ansi-yellow-intense-fg ansi-bold">=</span>grad_ys<span class="ansi-yellow-intense-fg ansi-bold">,</span>
-<span class="ansi-green-intense-fg ansi-bold">--&gt; 659</span><span class="ansi-yellow-intense-fg ansi-bold">             src_graph=self._func_graph)
-</span><span class="ansi-green-fg">    660</span> 
-<span class="ansi-green-fg">    661</span>     <span class="ansi-green-intense-fg ansi-bold">with</span> self<span class="ansi-yellow-intense-fg ansi-bold">.</span>_func_graph<span class="ansi-yellow-intense-fg ansi-bold">.</span>as_default<span class="ansi-yellow-intense-fg ansi-bold">(</span><span class="ansi-yellow-intense-fg ansi-bold">)</span><span class="ansi-yellow-intense-fg ansi-bold">:</span>
-
-<span class="ansi-green-intense-fg ansi-bold">~\anaconda3\envs\blog-env\lib\site-packages\tensorflow\python\ops\gradients_util.py</span> in <span class="ansi-cyan-fg">_GradientsHelper</span><span class="ansi-blue-intense-fg ansi-bold">(ys, xs, grad_ys, name, colocate_gradients_with_ops, gate_gradients, aggregation_method, stop_gradients, unconnected_gradients, src_graph)</span>
-<span class="ansi-green-fg">    667</span>                 <span class="ansi-red-intense-fg ansi-bold"># functions.</span>
-<span class="ansi-green-fg">    668</span>                 in_grads = _MaybeCompile(grad_scope, op, func_call,
-<span class="ansi-green-intense-fg ansi-bold">--&gt; 669</span><span class="ansi-yellow-intense-fg ansi-bold">                                          lambda: grad_fn(op, *out_grads))
-</span><span class="ansi-green-fg">    670</span>               <span class="ansi-green-intense-fg ansi-bold">else</span><span class="ansi-yellow-intense-fg ansi-bold">:</span>
-<span class="ansi-green-fg">    671</span>                 <span class="ansi-red-intense-fg ansi-bold"># For function call ops, we add a 'SymbolicGradient'</span>
-
-<span class="ansi-green-intense-fg ansi-bold">~\anaconda3\envs\blog-env\lib\site-packages\tensorflow\python\ops\gradients_util.py</span> in <span class="ansi-cyan-fg">_MaybeCompile</span><span class="ansi-blue-intense-fg ansi-bold">(scope, op, func, grad_fn)</span>
-<span class="ansi-green-fg">    334</span>       xla_scope <span class="ansi-yellow-intense-fg ansi-bold">=</span> op<span class="ansi-yellow-intense-fg ansi-bold">.</span>get_attr<span class="ansi-yellow-intense-fg ansi-bold">(</span><span class="ansi-blue-intense-fg ansi-bold">"_XlaScope"</span><span class="ansi-yellow-intense-fg ansi-bold">)</span><span class="ansi-yellow-intense-fg ansi-bold">.</span>decode<span class="ansi-yellow-intense-fg ansi-bold">(</span><span class="ansi-yellow-intense-fg ansi-bold">)</span>
-<span class="ansi-green-fg">    335</span>     <span class="ansi-green-intense-fg ansi-bold">except</span> ValueError<span class="ansi-yellow-intense-fg ansi-bold">:</span>
-<span class="ansi-green-intense-fg ansi-bold">--&gt; 336</span><span class="ansi-yellow-intense-fg ansi-bold">       </span><span class="ansi-green-intense-fg ansi-bold">return</span> grad_fn<span class="ansi-yellow-intense-fg ansi-bold">(</span><span class="ansi-yellow-intense-fg ansi-bold">)</span>  <span class="ansi-red-intense-fg ansi-bold"># Exit early</span>
-<span class="ansi-green-fg">    337</span> 
-<span class="ansi-green-fg">    338</span>   <span class="ansi-green-intense-fg ansi-bold">if</span> <span class="ansi-green-intense-fg ansi-bold">not</span> xla_compile<span class="ansi-yellow-intense-fg ansi-bold">:</span>
-
-<span class="ansi-green-intense-fg ansi-bold">~\anaconda3\envs\blog-env\lib\site-packages\tensorflow\python\ops\gradients_util.py</span> in <span class="ansi-cyan-fg">&lt;lambda&gt;</span><span class="ansi-blue-intense-fg ansi-bold">()</span>
-<span class="ansi-green-fg">    667</span>                 <span class="ansi-red-intense-fg ansi-bold"># functions.</span>
-<span class="ansi-green-fg">    668</span>                 in_grads = _MaybeCompile(grad_scope, op, func_call,
-<span class="ansi-green-intense-fg ansi-bold">--&gt; 669</span><span class="ansi-yellow-intense-fg ansi-bold">                                          lambda: grad_fn(op, *out_grads))
-</span><span class="ansi-green-fg">    670</span>               <span class="ansi-green-intense-fg ansi-bold">else</span><span class="ansi-yellow-intense-fg ansi-bold">:</span>
-<span class="ansi-green-fg">    671</span>                 <span class="ansi-red-intense-fg ansi-bold"># For function call ops, we add a 'SymbolicGradient'</span>
-
-<span class="ansi-green-intense-fg ansi-bold">~\anaconda3\envs\blog-env\lib\site-packages\tensorflow\python\ops\array_grad.py</span> in <span class="ansi-cyan-fg">_SplitGrad</span><span class="ansi-blue-intense-fg ansi-bold">(op, *grads)</span>
-<span class="ansi-green-fg">    317</span> <span class="ansi-yellow-intense-fg ansi-bold">@</span>ops<span class="ansi-yellow-intense-fg ansi-bold">.</span>RegisterGradient<span class="ansi-yellow-intense-fg ansi-bold">(</span><span class="ansi-blue-intense-fg ansi-bold">"Split"</span><span class="ansi-yellow-intense-fg ansi-bold">)</span>
-<span class="ansi-green-fg">    318</span> <span class="ansi-green-intense-fg ansi-bold">def</span> _SplitGrad<span class="ansi-yellow-intense-fg ansi-bold">(</span>op<span class="ansi-yellow-intense-fg ansi-bold">,</span> <span class="ansi-yellow-intense-fg ansi-bold">*</span>grads<span class="ansi-yellow-intense-fg ansi-bold">)</span><span class="ansi-yellow-intense-fg ansi-bold">:</span>
-<span class="ansi-green-intense-fg ansi-bold">--&gt; 319</span><span class="ansi-yellow-intense-fg ansi-bold">   </span><span class="ansi-green-intense-fg ansi-bold">return</span> <span class="ansi-green-intense-fg ansi-bold">None</span><span class="ansi-yellow-intense-fg ansi-bold">,</span> array_ops<span class="ansi-yellow-intense-fg ansi-bold">.</span>concat<span class="ansi-yellow-intense-fg ansi-bold">(</span>list<span class="ansi-yellow-intense-fg ansi-bold">(</span>grads<span class="ansi-yellow-intense-fg ansi-bold">)</span><span class="ansi-yellow-intense-fg ansi-bold">,</span> op<span class="ansi-yellow-intense-fg ansi-bold">.</span>inputs<span class="ansi-yellow-intense-fg ansi-bold">[</span><span class="ansi-cyan-intense-fg ansi-bold">0</span><span class="ansi-yellow-intense-fg ansi-bold">]</span><span class="ansi-yellow-intense-fg ansi-bold">)</span>
-<span class="ansi-green-fg">    320</span> 
-<span class="ansi-green-fg">    321</span> 
-
-<span class="ansi-green-intense-fg ansi-bold">~\anaconda3\envs\blog-env\lib\site-packages\tensorflow\python\util\dispatch.py</span> in <span class="ansi-cyan-fg">wrapper</span><span class="ansi-blue-intense-fg ansi-bold">(*args, **kwargs)</span>
-<span class="ansi-green-fg">    199</span>     <span class="ansi-blue-intense-fg ansi-bold">"""Call target, and fall back on dispatchers if there is a TypeError."""</span>
-<span class="ansi-green-fg">    200</span>     <span class="ansi-green-intense-fg ansi-bold">try</span><span class="ansi-yellow-intense-fg ansi-bold">:</span>
-<span class="ansi-green-intense-fg ansi-bold">--&gt; 201</span><span class="ansi-yellow-intense-fg ansi-bold">       </span><span class="ansi-green-intense-fg ansi-bold">return</span> target<span class="ansi-yellow-intense-fg ansi-bold">(</span><span class="ansi-yellow-intense-fg ansi-bold">*</span>args<span class="ansi-yellow-intense-fg ansi-bold">,</span> <span class="ansi-yellow-intense-fg ansi-bold">**</span>kwargs<span class="ansi-yellow-intense-fg ansi-bold">)</span>
-<span class="ansi-green-fg">    202</span>     <span class="ansi-green-intense-fg ansi-bold">except</span> <span class="ansi-yellow-intense-fg ansi-bold">(</span>TypeError<span class="ansi-yellow-intense-fg ansi-bold">,</span> ValueError<span class="ansi-yellow-intense-fg ansi-bold">)</span><span class="ansi-yellow-intense-fg ansi-bold">:</span>
-<span class="ansi-green-fg">    203</span>       <span class="ansi-red-intense-fg ansi-bold"># Note: convert_to_eager_tensor currently raises a ValueError, not a</span>
-
-<span class="ansi-green-intense-fg ansi-bold">~\anaconda3\envs\blog-env\lib\site-packages\tensorflow\python\ops\array_ops.py</span> in <span class="ansi-cyan-fg">concat</span><span class="ansi-blue-intense-fg ansi-bold">(values, axis, name)</span>
-<span class="ansi-green-fg">   1652</span>           dtype=dtypes.int32).get_shape().assert_has_rank(0)
-<span class="ansi-green-fg">   1653</span>       <span class="ansi-green-intense-fg ansi-bold">return</span> identity<span class="ansi-yellow-intense-fg ansi-bold">(</span>values<span class="ansi-yellow-intense-fg ansi-bold">[</span><span class="ansi-cyan-intense-fg ansi-bold">0</span><span class="ansi-yellow-intense-fg ansi-bold">]</span><span class="ansi-yellow-intense-fg ansi-bold">,</span> name<span class="ansi-yellow-intense-fg ansi-bold">=</span>name<span class="ansi-yellow-intense-fg ansi-bold">)</span>
-<span class="ansi-green-intense-fg ansi-bold">-&gt; 1654</span><span class="ansi-yellow-intense-fg ansi-bold">   </span><span class="ansi-green-intense-fg ansi-bold">return</span> gen_array_ops<span class="ansi-yellow-intense-fg ansi-bold">.</span>concat_v2<span class="ansi-yellow-intense-fg ansi-bold">(</span>values<span class="ansi-yellow-intense-fg ansi-bold">=</span>values<span class="ansi-yellow-intense-fg ansi-bold">,</span> axis<span class="ansi-yellow-intense-fg ansi-bold">=</span>axis<span class="ansi-yellow-intense-fg ansi-bold">,</span> name<span class="ansi-yellow-intense-fg ansi-bold">=</span>name<span class="ansi-yellow-intense-fg ansi-bold">)</span>
-<span class="ansi-green-fg">   1655</span> 
-<span class="ansi-green-fg">   1656</span> 
-
-<span class="ansi-green-intense-fg ansi-bold">~\anaconda3\envs\blog-env\lib\site-packages\tensorflow\python\ops\gen_array_ops.py</span> in <span class="ansi-cyan-fg">concat_v2</span><span class="ansi-blue-intense-fg ansi-bold">(values, axis, name)</span>
-<span class="ansi-green-fg">   1219</span>   _attr_N <span class="ansi-yellow-intense-fg ansi-bold">=</span> len<span class="ansi-yellow-intense-fg ansi-bold">(</span>values<span class="ansi-yellow-intense-fg ansi-bold">)</span>
-<span class="ansi-green-fg">   1220</span>   _, _, _op, _outputs = _op_def_library._apply_op_helper(
-<span class="ansi-green-intense-fg ansi-bold">-&gt; 1221</span><span class="ansi-yellow-intense-fg ansi-bold">         "ConcatV2", values=values, axis=axis, name=name)
-</span><span class="ansi-green-fg">   1222</span>   _result <span class="ansi-yellow-intense-fg ansi-bold">=</span> _outputs<span class="ansi-yellow-intense-fg ansi-bold">[</span><span class="ansi-yellow-intense-fg ansi-bold">:</span><span class="ansi-yellow-intense-fg ansi-bold">]</span>
-<span class="ansi-green-fg">   1223</span>   <span class="ansi-green-intense-fg ansi-bold">if</span> _execute<span class="ansi-yellow-intense-fg ansi-bold">.</span>must_record_gradient<span class="ansi-yellow-intense-fg ansi-bold">(</span><span class="ansi-yellow-intense-fg ansi-bold">)</span><span class="ansi-yellow-intense-fg ansi-bold">:</span>
-
-<span class="ansi-green-intense-fg ansi-bold">~\anaconda3\envs\blog-env\lib\site-packages\tensorflow\python\framework\op_def_library.py</span> in <span class="ansi-cyan-fg">_apply_op_helper</span><span class="ansi-blue-intense-fg ansi-bold">(op_type_name, name, **keywords)</span>
-<span class="ansi-green-fg">    742</span>       op = g._create_op_internal(op_type_name, inputs, dtypes=None,
-<span class="ansi-green-fg">    743</span>                                  name<span class="ansi-yellow-intense-fg ansi-bold">=</span>scope<span class="ansi-yellow-intense-fg ansi-bold">,</span> input_types<span class="ansi-yellow-intense-fg ansi-bold">=</span>input_types<span class="ansi-yellow-intense-fg ansi-bold">,</span>
-<span class="ansi-green-intense-fg ansi-bold">--&gt; 744</span><span class="ansi-yellow-intense-fg ansi-bold">                                  attrs=attr_protos, op_def=op_def)
-</span><span class="ansi-green-fg">    745</span> 
-<span class="ansi-green-fg">    746</span>     <span class="ansi-red-intense-fg ansi-bold"># `outputs` is returned as a separate return value so that the output</span>
-
-<span class="ansi-green-intense-fg ansi-bold">~\anaconda3\envs\blog-env\lib\site-packages\tensorflow\python\framework\func_graph.py</span> in <span class="ansi-cyan-fg">_create_op_internal</span><span class="ansi-blue-intense-fg ansi-bold">(self, op_type, inputs, dtypes, input_types, name, attrs, op_def, compute_device)</span>
-<span class="ansi-green-fg">    587</span>       <span class="ansi-green-intense-fg ansi-bold">if</span> ctxt <span class="ansi-green-intense-fg ansi-bold">is</span> <span class="ansi-green-intense-fg ansi-bold">not</span> <span class="ansi-green-intense-fg ansi-bold">None</span> <span class="ansi-green-intense-fg ansi-bold">and</span> hasattr<span class="ansi-yellow-intense-fg ansi-bold">(</span>ctxt<span class="ansi-yellow-intense-fg ansi-bold">,</span> <span class="ansi-blue-intense-fg ansi-bold">"AddValue"</span><span class="ansi-yellow-intense-fg ansi-bold">)</span><span class="ansi-yellow-intense-fg ansi-bold">:</span>
-<span class="ansi-green-fg">    588</span>         inp <span class="ansi-yellow-intense-fg ansi-bold">=</span> ctxt<span class="ansi-yellow-intense-fg ansi-bold">.</span>AddValue<span class="ansi-yellow-intense-fg ansi-bold">(</span>inp<span class="ansi-yellow-intense-fg ansi-bold">)</span>
-<span class="ansi-green-intense-fg ansi-bold">--&gt; 589</span><span class="ansi-yellow-intense-fg ansi-bold">       </span>inp <span class="ansi-yellow-intense-fg ansi-bold">=</span> self<span class="ansi-yellow-intense-fg ansi-bold">.</span>capture<span class="ansi-yellow-intense-fg ansi-bold">(</span>inp<span class="ansi-yellow-intense-fg ansi-bold">)</span>
-<span class="ansi-green-fg">    590</span>       inputs<span class="ansi-yellow-intense-fg ansi-bold">[</span>i<span class="ansi-yellow-intense-fg ansi-bold">]</span> <span class="ansi-yellow-intense-fg ansi-bold">=</span> inp
-<span class="ansi-green-fg">    591</span>     return super(FuncGraph, self)._create_op_internal(  # pylint: disable=protected-access
-
-<span class="ansi-green-intense-fg ansi-bold">~\anaconda3\envs\blog-env\lib\site-packages\tensorflow\python\framework\func_graph.py</span> in <span class="ansi-cyan-fg">capture</span><span class="ansi-blue-intense-fg ansi-bold">(self, tensor, name, shape)</span>
-<span class="ansi-green-fg">    639</span>               % (tensor, tensor.graph, self))
-<span class="ansi-green-fg">    640</span>         inner_graph <span class="ansi-yellow-intense-fg ansi-bold">=</span> inner_graph<span class="ansi-yellow-intense-fg ansi-bold">.</span>outer_graph
-<span class="ansi-green-intense-fg ansi-bold">--&gt; 641</span><span class="ansi-yellow-intense-fg ansi-bold">       </span><span class="ansi-green-intense-fg ansi-bold">return</span> self<span class="ansi-yellow-intense-fg ansi-bold">.</span>_capture_helper<span class="ansi-yellow-intense-fg ansi-bold">(</span>tensor<span class="ansi-yellow-intense-fg ansi-bold">,</span> name<span class="ansi-yellow-intense-fg ansi-bold">)</span>
-<span class="ansi-green-fg">    642</span>     <span class="ansi-green-intense-fg ansi-bold">return</span> tensor
-<span class="ansi-green-fg">    643</span> 
-
-<span class="ansi-green-intense-fg ansi-bold">~\anaconda3\envs\blog-env\lib\site-packages\tensorflow\python\framework\func_graph.py</span> in <span class="ansi-cyan-fg">_capture_helper</span><span class="ansi-blue-intense-fg ansi-bold">(self, tensor, name, shape)</span>
-<span class="ansi-green-fg">    646</span>     <span class="ansi-green-intense-fg ansi-bold">if</span> capture <span class="ansi-green-intense-fg ansi-bold">is</span> <span class="ansi-green-intense-fg ansi-bold">None</span><span class="ansi-yellow-intense-fg ansi-bold">:</span>
-<span class="ansi-green-fg">    647</span>       placeholder = _create_substitute_placeholder(
-<span class="ansi-green-intense-fg ansi-bold">--&gt; 648</span><span class="ansi-yellow-intense-fg ansi-bold">           tensor, name=name, dtype=tensor.dtype, shape=shape)
-</span><span class="ansi-green-fg">    649</span>       <span class="ansi-red-intense-fg ansi-bold"># Record the composite device as an attribute to the placeholder.</span>
-<span class="ansi-green-fg">    650</span>       <span class="ansi-red-intense-fg ansi-bold"># This attribute would be propogated into the arg_attr of the FunctionDef.</span>
-
-<span class="ansi-green-intense-fg ansi-bold">~\anaconda3\envs\blog-env\lib\site-packages\tensorflow\python\framework\func_graph.py</span> in <span class="ansi-cyan-fg">_create_substitute_placeholder</span><span class="ansi-blue-intense-fg ansi-bold">(value, name, dtype, shape)</span>
-<span class="ansi-green-fg">   1129</span>   <span class="ansi-green-intense-fg ansi-bold">with</span> ops<span class="ansi-yellow-intense-fg ansi-bold">.</span>control_dependencies<span class="ansi-yellow-intense-fg ansi-bold">(</span><span class="ansi-green-intense-fg ansi-bold">None</span><span class="ansi-yellow-intense-fg ansi-bold">)</span><span class="ansi-yellow-intense-fg ansi-bold">:</span>
-<span class="ansi-green-fg">   1130</span>     placeholder = graph_placeholder(
-<span class="ansi-green-intense-fg ansi-bold">-&gt; 1131</span><span class="ansi-yellow-intense-fg ansi-bold">         dtype=dtype or value.dtype, shape=shape, name=name)
-</span><span class="ansi-green-fg">   1132</span>   custom_gradient<span class="ansi-yellow-intense-fg ansi-bold">.</span>copy_handle_data<span class="ansi-yellow-intense-fg ansi-bold">(</span>value<span class="ansi-yellow-intense-fg ansi-bold">,</span> placeholder<span class="ansi-yellow-intense-fg ansi-bold">)</span>
-<span class="ansi-green-fg">   1133</span>   <span class="ansi-green-intense-fg ansi-bold">return</span> placeholder
-
-<span class="ansi-green-intense-fg ansi-bold">~\anaconda3\envs\blog-env\lib\site-packages\tensorflow\python\eager\graph_only_ops.py</span> in <span class="ansi-cyan-fg">graph_placeholder</span><span class="ansi-blue-intense-fg ansi-bold">(dtype, shape, name)</span>
-<span class="ansi-green-fg">     38</span>   op = g._create_op_internal(  # pylint: disable=protected-access
-<span class="ansi-green-fg">     39</span>       <span class="ansi-blue-intense-fg ansi-bold">"Placeholder"</span><span class="ansi-yellow-intense-fg ansi-bold">,</span> <span class="ansi-yellow-intense-fg ansi-bold">[</span><span class="ansi-yellow-intense-fg ansi-bold">]</span><span class="ansi-yellow-intense-fg ansi-bold">,</span> <span class="ansi-yellow-intense-fg ansi-bold">[</span>dtype<span class="ansi-yellow-intense-fg ansi-bold">]</span><span class="ansi-yellow-intense-fg ansi-bold">,</span> input_types<span class="ansi-yellow-intense-fg ansi-bold">=</span><span class="ansi-yellow-intense-fg ansi-bold">[</span><span class="ansi-yellow-intense-fg ansi-bold">]</span><span class="ansi-yellow-intense-fg ansi-bold">,</span>
-<span class="ansi-green-intense-fg ansi-bold">---&gt; 40</span><span class="ansi-yellow-intense-fg ansi-bold">       attrs=attrs, name=name)
-</span><span class="ansi-green-fg">     41</span>   result<span class="ansi-yellow-intense-fg ansi-bold">,</span> <span class="ansi-yellow-intense-fg ansi-bold">=</span> op<span class="ansi-yellow-intense-fg ansi-bold">.</span>outputs
-<span class="ansi-green-fg">     42</span>   <span class="ansi-green-intense-fg ansi-bold">if</span> op_callbacks<span class="ansi-yellow-intense-fg ansi-bold">.</span>should_invoke_op_callbacks<span class="ansi-yellow-intense-fg ansi-bold">(</span><span class="ansi-yellow-intense-fg ansi-bold">)</span><span class="ansi-yellow-intense-fg ansi-bold">:</span>
-
-<span class="ansi-green-intense-fg ansi-bold">~\anaconda3\envs\blog-env\lib\site-packages\tensorflow\python\framework\func_graph.py</span> in <span class="ansi-cyan-fg">_create_op_internal</span><span class="ansi-blue-intense-fg ansi-bold">(self, op_type, inputs, dtypes, input_types, name, attrs, op_def, compute_device)</span>
-<span class="ansi-green-fg">    591</span>     return super(FuncGraph, self)._create_op_internal(  # pylint: disable=protected-access
-<span class="ansi-green-fg">    592</span>         op_type<span class="ansi-yellow-intense-fg ansi-bold">,</span> inputs<span class="ansi-yellow-intense-fg ansi-bold">,</span> dtypes<span class="ansi-yellow-intense-fg ansi-bold">,</span> input_types<span class="ansi-yellow-intense-fg ansi-bold">,</span> name<span class="ansi-yellow-intense-fg ansi-bold">,</span> attrs<span class="ansi-yellow-intense-fg ansi-bold">,</span> op_def<span class="ansi-yellow-intense-fg ansi-bold">,</span>
-<span class="ansi-green-intense-fg ansi-bold">--&gt; 593</span><span class="ansi-yellow-intense-fg ansi-bold">         compute_device)
-</span><span class="ansi-green-fg">    594</span> 
-<span class="ansi-green-fg">    595</span>   <span class="ansi-green-intense-fg ansi-bold">def</span> capture<span class="ansi-yellow-intense-fg ansi-bold">(</span>self<span class="ansi-yellow-intense-fg ansi-bold">,</span> tensor<span class="ansi-yellow-intense-fg ansi-bold">,</span> name<span class="ansi-yellow-intense-fg ansi-bold">=</span><span class="ansi-green-intense-fg ansi-bold">None</span><span class="ansi-yellow-intense-fg ansi-bold">,</span> shape<span class="ansi-yellow-intense-fg ansi-bold">=</span><span class="ansi-green-intense-fg ansi-bold">None</span><span class="ansi-yellow-intense-fg ansi-bold">)</span><span class="ansi-yellow-intense-fg ansi-bold">:</span>
-
-<span class="ansi-green-intense-fg ansi-bold">~\anaconda3\envs\blog-env\lib\site-packages\tensorflow\python\framework\ops.py</span> in <span class="ansi-cyan-fg">_create_op_internal</span><span class="ansi-blue-intense-fg ansi-bold">(self, op_type, inputs, dtypes, input_types, name, attrs, op_def, compute_device)</span>
-<span class="ansi-green-fg">   3483</span>           input_types<span class="ansi-yellow-intense-fg ansi-bold">=</span>input_types<span class="ansi-yellow-intense-fg ansi-bold">,</span>
-<span class="ansi-green-fg">   3484</span>           original_op<span class="ansi-yellow-intense-fg ansi-bold">=</span>self<span class="ansi-yellow-intense-fg ansi-bold">.</span>_default_original_op<span class="ansi-yellow-intense-fg ansi-bold">,</span>
-<span class="ansi-green-intense-fg ansi-bold">-&gt; 3485</span><span class="ansi-yellow-intense-fg ansi-bold">           op_def=op_def)
-</span><span class="ansi-green-fg">   3486</span>       self<span class="ansi-yellow-intense-fg ansi-bold">.</span>_create_op_helper<span class="ansi-yellow-intense-fg ansi-bold">(</span>ret<span class="ansi-yellow-intense-fg ansi-bold">,</span> compute_device<span class="ansi-yellow-intense-fg ansi-bold">=</span>compute_device<span class="ansi-yellow-intense-fg ansi-bold">)</span>
-<span class="ansi-green-fg">   3487</span>     <span class="ansi-green-intense-fg ansi-bold">return</span> ret
-
-<span class="ansi-green-intense-fg ansi-bold">~\anaconda3\envs\blog-env\lib\site-packages\tensorflow\python\framework\ops.py</span> in <span class="ansi-cyan-fg">__init__</span><span class="ansi-blue-intense-fg ansi-bold">(self, node_def, g, inputs, output_types, control_inputs, input_types, original_op, op_def)</span>
-<span class="ansi-green-fg">   1973</span>         op_def <span class="ansi-yellow-intense-fg ansi-bold">=</span> self<span class="ansi-yellow-intense-fg ansi-bold">.</span>_graph<span class="ansi-yellow-intense-fg ansi-bold">.</span>_get_op_def<span class="ansi-yellow-intense-fg ansi-bold">(</span>node_def<span class="ansi-yellow-intense-fg ansi-bold">.</span>op<span class="ansi-yellow-intense-fg ansi-bold">)</span>
-<span class="ansi-green-fg">   1974</span>       self._c_op = _create_c_op(self._graph, node_def, inputs,
-<span class="ansi-green-intense-fg ansi-bold">-&gt; 1975</span><span class="ansi-yellow-intense-fg ansi-bold">                                 control_input_ops, op_def)
-</span><span class="ansi-green-fg">   1976</span>       name <span class="ansi-yellow-intense-fg ansi-bold">=</span> compat<span class="ansi-yellow-intense-fg ansi-bold">.</span>as_str<span class="ansi-yellow-intense-fg ansi-bold">(</span>node_def<span class="ansi-yellow-intense-fg ansi-bold">.</span>name<span class="ansi-yellow-intense-fg ansi-bold">)</span>
-<span class="ansi-green-fg">   1977</span>     <span class="ansi-red-intense-fg ansi-bold"># pylint: enable=protected-access</span>
-
-<span class="ansi-green-intense-fg ansi-bold">~\anaconda3\envs\blog-env\lib\site-packages\tensorflow\python\framework\ops.py</span> in <span class="ansi-cyan-fg">_create_c_op</span><span class="ansi-blue-intense-fg ansi-bold">(graph, node_def, inputs, control_inputs, op_def)</span>
-<span class="ansi-green-fg">   1810</span> 
-<span class="ansi-green-fg">   1811</span>   <span class="ansi-green-intense-fg ansi-bold">try</span><span class="ansi-yellow-intense-fg ansi-bold">:</span>
-<span class="ansi-green-intense-fg ansi-bold">-&gt; 1812</span><span class="ansi-yellow-intense-fg ansi-bold">     </span>c_op <span class="ansi-yellow-intense-fg ansi-bold">=</span> pywrap_tf_session<span class="ansi-yellow-intense-fg ansi-bold">.</span>TF_FinishOperation<span class="ansi-yellow-intense-fg ansi-bold">(</span>op_desc<span class="ansi-yellow-intense-fg ansi-bold">)</span>
-<span class="ansi-green-fg">   1813</span>   <span class="ansi-green-intense-fg ansi-bold">except</span> errors<span class="ansi-yellow-intense-fg ansi-bold">.</span>InvalidArgumentError <span class="ansi-green-intense-fg ansi-bold">as</span> e<span class="ansi-yellow-intense-fg ansi-bold">:</span>
-<span class="ansi-green-fg">   1814</span>     <span class="ansi-red-intense-fg ansi-bold"># Convert to ValueError for backwards compatibility.</span>
-
-<span class="ansi-red-intense-fg ansi-bold">KeyboardInterrupt</span>: </pre>
 </div>
 </div>
 
@@ -1937,6 +1421,54 @@ During handling of the above exception, another exception occurred:
 </pre></div>
 
     </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Results summary
+Results in tuner\2021-05-31-LSTM timeseries forecasting with Keras Tuner-DATA
+Showing 1 best trials
+Objective(name='val_loss', direction='min')
+Trial summary
+Hyperparameters:
+lstm_1_kernel_regularizer_l2_alpha: 4.1737727175921614e-05
+lstm_1_bias_regularizer_l2_alpha: 4.8976972747774515e-05
+lstm_1_units: 80
+lstm_1_dropout: 0.4
+lstm_2_kernel_regularizer_l2_alpha: 4.5812966495230725e-05
+lstm_2_bias_regularizer_l2_alpha: 6.770493075255721e-05
+lstm_2_units: 92
+lstm_2_dropout: 0.5
+dense_dropout: 0.5
+dense_3_kernel_regularizer_l2_alpha: 0.0003613756121673186
+dense_3_bias_regularizer_l2_alpha: 8.469511384176585e-05
+dense_3_units: 160
+dense_2_kernel_regularizer_l2_alpha: 0.0002520638781340629
+dense_2_bias_regularizer_l2_alpha: 2.549838489581324e-05
+dense_2_units: 72
+dense_1_kernel_regularizer_l2_alpha: 0.0003215321169102662
+dense_1_bias_regularizer_l2_alpha: 5.226773144140582e-05
+dense_1_units: 40
+dense_0_kernel_regularizer_l2_alpha: 1.2868874105637867e-05
+dense_0_bias_regularizer_l2_alpha: 2.9042057062072963e-05
+dense_0_units: 12
+dense_output_kernel_regularizer_l2_alpha: 4.658879293854428e-05
+dense_output_bias_regularizer_l2_alpha: 2.2497035888691814e-05
+learning_rate: 0.0006096785546646039
+tuner/epochs: 100
+tuner/initial_epoch: 0
+tuner/bracket: 0
+tuner/round: 0
+Score: 0.16335302591323853
+</pre>
+</div>
+</div>
+
 </div>
 </div>
 
@@ -1996,32 +1528,6 @@ During handling of the above exception, another exception occurred:
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Here is a description of the model's <strong>architecture</strong>:</p>
-
-</div>
-</div>
-</div>
-    
-    
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">summary</span><span class="p">(</span>
-    <span class="n">line_length</span><span class="o">=</span><span class="mi">120</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-    
-
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
 <p>Let's <strong>fit</strong> this model using the training data used during the search:</p>
 
 </div>
@@ -2040,7 +1546,7 @@ During handling of the above exception, another exception occurred:
     <span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
     <span class="n">batch_size</span><span class="o">=</span><span class="n">params</span><span class="p">[</span><span class="s1">'batch_size'</span><span class="p">],</span>
     <span class="n">validation_data</span><span class="o">=</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">),</span>
-    <span class="n">epochs</span><span class="o">=</span><span class="n">params</span><span class="p">[</span><span class="s1">'max_epochs'</span><span class="p">],</span> 
+    <span class="n">epochs</span><span class="o">=</span><span class="mi">2</span><span class="o">*</span><span class="n">params</span><span class="p">[</span><span class="s1">'max_epochs'</span><span class="p">],</span> 
     <span class="n">callbacks</span><span class="o">=</span><span class="p">[</span> 
         <span class="n">kc</span><span class="o">.</span><span class="n">EarlyStopping</span><span class="p">(</span>
             <span class="n">monitor</span><span class="o">=</span><span class="s1">'val_loss'</span><span class="p">,</span> 
@@ -2076,7 +1582,7 @@ During handling of the above exception, another exception occurred:
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">save</span><span class="p">(</span>
-    <span class="s1">'./models/</span><span class="si">{0}</span><span class="s1">.h5'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+    <span class="s1">'./.models/</span><span class="si">{0}</span><span class="s1">.h5'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
         <span class="n">params</span><span class="p">[</span><span class="s1">'experiment_name'</span><span class="p">]))</span>
 </pre></div>
 
@@ -2087,6 +1593,93 @@ During handling of the above exception, another exception occurred:
 </div>
     
 
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Here is a description of the model's <strong>architecture</strong>:</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">summary</span><span class="p">(</span>
+    <span class="n">line_length</span><span class="o">=</span><span class="mi">120</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Model: "sequential"
+________________________________________________________________________________________________________________________
+Layer (type)                                          Output Shape                                    Param #           
+========================================================================================================================
+bidirectional (Bidirectional)                         (None, 160)                                     54400             
+________________________________________________________________________________________________________________________
+repeat_vector (RepeatVector)                          (None, 13, 160)                                 0                 
+________________________________________________________________________________________________________________________
+bidirectional_1 (Bidirectional)                       (None, 13, 184)                                 186208            
+________________________________________________________________________________________________________________________
+time_distributed (TimeDistributed)                    (None, 13, 160)                                 29600             
+________________________________________________________________________________________________________________________
+dense_3_dropout (Dropout)                             (None, 13, 160)                                 0                 
+________________________________________________________________________________________________________________________
+time_distributed_1 (TimeDistributed)                  (None, 13, 72)                                  11592             
+________________________________________________________________________________________________________________________
+dense_2_dropout (Dropout)                             (None, 13, 72)                                  0                 
+________________________________________________________________________________________________________________________
+time_distributed_2 (TimeDistributed)                  (None, 13, 40)                                  2920              
+________________________________________________________________________________________________________________________
+dense_1_dropout (Dropout)                             (None, 13, 40)                                  0                 
+________________________________________________________________________________________________________________________
+time_distributed_3 (TimeDistributed)                  (None, 13, 12)                                  492               
+________________________________________________________________________________________________________________________
+dense_0_dropout (Dropout)                             (None, 13, 12)                                  0                 
+________________________________________________________________________________________________________________________
+time_distributed_4 (TimeDistributed)                  (None, 13, 1)                                   13                
+========================================================================================================================
+Total params: 285,225
+Trainable params: 285,225
+Non-trainable params: 0
+________________________________________________________________________________________________________________________
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>And here is a visual <strong>plot</strong> of the model:</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><img src="/blog/images/copied_from_nb/images/lstm-model.png" alt=""></p>
+
+</div>
+</div>
+</div>
 </div>
 
 
