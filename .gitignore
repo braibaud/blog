@@ -9,8 +9,9 @@ _site
 vendor
 
 _notebooks/.ipynb_checkpoints
-_notebooks/parking
-_notebooks/tuner
+_notebooks/.parking
+_notebooks/.tuner
+_notebooks/.models
 
 # Local Netlify folder
 .netlify

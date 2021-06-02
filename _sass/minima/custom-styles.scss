@@ -13,7 +13,8 @@
     vertical-align: top;
     margin-left: auto;
     margin-right: auto;
-    aspect-ratio: initial !important;
+    aspect-ratio: initial;
+    height: auto;
 }
 
 // If you want to turn off dark background for syntax highlighting, comment or delete the below line.
