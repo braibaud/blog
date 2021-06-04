@@ -12,6 +12,7 @@ _notebooks/.ipynb_checkpoints
 _notebooks/.parking
 _notebooks/.tuner
 _notebooks/.models
+_draft
 
 # Local Netlify folder
 .netlify
