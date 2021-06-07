@@ -12,7 +12,11 @@ _notebooks/.ipynb_checkpoints
 _notebooks/.parking
 _notebooks/.tuner
 _notebooks/.models
-_draft
+
+_draft/.ipynb_checkpoints
+_draft/.parking
+_draft/.tuner
+_draft/.models
 
 # Local Netlify folder
 .netlify
