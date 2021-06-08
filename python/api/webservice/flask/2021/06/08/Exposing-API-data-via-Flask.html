@@ -78,7 +78,7 @@ window.onload = wrap_img;
        • <span class="read-time" title="Estimated read time">
     
     
-      10 min read
+      4 min read
     
 </span></p>
 
@@ -149,7 +149,7 @@ window.onload = wrap_img;
 <a class="anchor" href="#About" aria-hidden="true"><span class="octicon octicon-link"></span></a>About<a class="anchor-link" href="#About"> </a>
 </h1>
 <p>We are going to pull data from a webservice, transform it and serve it back via a webservice.</p>
-<p><img src="/blog/images/copied_from_nb/./images/2021-06-08-exposing-api-data-via-flask-main.jpg" alt="Photo by Andrea Davis"></p>
+<p><img src="/blog/images/copied_from_nb/./images/2021-06-08-exposing-api-data-via-flask-main.jpg" alt="" title="Photo by Andrea Davis"></p>
 
 </div>
 </div>
@@ -424,405 +424,20 @@ window.onload = wrap_img;
 </div>
     
 
-    
-    
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">get_ratings</span><span class="p">(</span><span class="n">listing_id</span><span class="o">=</span><span class="n">listing_id</span><span class="p">,</span> <span class="n">keep_n_reviews</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="output_area">
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>{'accept': 'application/json', 'accept-encoding': 'br, gzip, deflate', 'content-type': 'application/json', 'x-airbnb-api-key': '915pw2pnf4h1aiguhph5gc5b2', 'user-agent': 'Airbnb/17.13 iPhone/10.3.1 Type/Phone', 'x-airbnb-screensize': 'w=375.00;h=812.00', 'x-airbnb-carrier-name': 'T-Mobile', 'x-airbnb-network-type': 'wifi', 'x-airbnb-currency': 'USD', 'x-airbnb-locale': 'fr', 'x-airbnb-carrier-country': 'us', 'accept-language': 'fr', 'airbnb-device-id': '9a9092886fafc1b44f13c1a26cbb9ae0b1207e4c', 'x-airbnb-advertising-id': '09A2B1E9-278F-4E1C-9159-5659F82D890B'}
-</pre>
-</div>
-</div>
-
-<div class="output_area">
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>{'overall_rating': 4.97,
- 'review_count': 31,
- 'categories': [{'category': 'accuracy',
-   'value': 10,
-   'label': 'Précision',
-   'localized_rating': '5,0',
-   'percentage': 1.0,
-   'rating': 5.0},
-  {'category': 'communication',
-   'value': 10,
-   'label': 'Communication',
-   'localized_rating': '5,0',
-   'percentage': 1.0,
-   'rating': 5.0},
-  {'category': 'cleanliness',
-   'value': 10,
-   'label': 'Propreté',
-   'localized_rating': '5,0',
-   'percentage': 0.994,
-   'rating': 5.0},
-  {'category': 'location',
-   'value': 10,
-   'label': 'Emplacement',
-   'localized_rating': '5,0',
-   'percentage': 1.0,
-   'rating': 5.0},
-  {'category': 'checkin',
-   'value': 10,
-   'label': 'Arrivée',
-   'localized_rating': '5,0',
-   'percentage': 1.0,
-   'rating': 5.0},
-  {'category': 'value',
-   'value': 10,
-   'label': 'Qualité-prix',
-   'localized_rating': '5,0',
-   'percentage': 0.994,
-   'rating': 5.0}],
- 'rating_terms': [{'localized_text': 'Propreté impeccable',
-   'localized_count_string': '15',
-   'icon': 'IconIndicatorTub'},
-  {'localized_text': 'Hospitalité unique',
-   'localized_count_string': '13',
-   'icon': 'IconIndicatorHeart'},
-  {'localized_text': 'Réactivité',
-   'localized_count_string': '11',
-   'icon': 'IconIndicatorChatBubble'},
-  {'localized_text': 'Déco et design',
-   'localized_count_string': '7',
-   'icon': 'IconIndicatorInterior'},
-  {'localized_text': 'Équipements exceptionnels',
-   'localized_count_string': '6',
-   'icon': 'IconIndicatorCup'}],
- 'reviews': [{'author': {'first_name': 'Camille',
-    'has_profile_pic': True,
-    'id': 8054257,
-    'picture_url': 'https://a0.muscache.com/im/pictures/user/da31231b-666d-4167-a02e-9e619c0dc22c.jpg?aki_policy=profile_x_medium',
-    'smart_name': 'Camille',
-    'thumbnail_url': 'https://a0.muscache.com/im/pictures/user/da31231b-666d-4167-a02e-9e619c0dc22c.jpg?aki_policy=profile_small'},
-   'author_id': 8054257,
-   'can_be_edited': False,
-   'comments': 'Je recommande vivement cet appartement. Très bien situé dans Chamonix, un appartement fonctionnel et propre, avec une très belle vue sur le Mont-Blanc. Patricia et Thierry sont très accueillants, arrangeants et disponibles. J’y retournerai sans hésitation!',
-   'created_at': '2021-04-03T11:33:57Z',
-   'id': 744854651,
-   'id_str': '744854651',
-   'listing_id': 36902451,
-   'recipient_id': 251507728,
-   'collection_tag': None,
-   'listing': {'id': 36902451,
-    'listing_id_str': '36902451',
-    'name': 'Duplex spacieux et lumineux au centre de Chamonix'},
-   'rating': 5,
-   'recipient': {'first_name': 'Patricia &amp; Thierry',
-    'has_profile_pic': True,
-    'id': 251507728,
-    'picture_url': 'https://a0.muscache.com/im/pictures/user/2cfba405-b621-42b6-8d58-4bf53055f5e2.jpg?aki_policy=profile_x_medium',
-    'smart_name': 'Patricia &amp; Thierry',
-    'thumbnail_url': 'https://a0.muscache.com/im/pictures/user/2cfba405-b621-42b6-8d58-4bf53055f5e2.jpg?aki_policy=profile_small'},
-   'response': '',
-   'role': 'guest',
-   'language': 'fr',
-   'user_flag': None,
-   'created_at__dt': datetime.datetime(2021, 4, 3, 11, 33, 57, tzinfo=tzutc())},
-  {'author': {'first_name': 'Nicolas',
-    'has_profile_pic': False,
-    'id': 392379609,
-    'picture_url': 'https://a0.muscache.com/defaults/user_pic-225x225.png?v=3',
-    'smart_name': 'Nicolas',
-    'thumbnail_url': 'https://a0.muscache.com/defaults/user_pic-50x50.png?v=3'},
-   'author_id': 392379609,
-   'can_be_edited': False,
-   'comments': 'Un appartement bien agencé très propre et proche du centre ville. Les propriétaires sont également réactifs et très sympathique. Je recommande vivement ',
-   'created_at': '2021-03-20T12:59:02Z',
-   'id': 740510018,
-   'id_str': '740510018',
-   'listing_id': 36902451,
-   'recipient_id': 251507728,
-   'collection_tag': None,
-   'listing': {'id': 36902451,
-    'listing_id_str': '36902451',
-    'name': 'Duplex spacieux et lumineux au centre de Chamonix'},
-   'rating': 5,
-   'recipient': {'first_name': 'Patricia &amp; Thierry',
-    'has_profile_pic': True,
-    'id': 251507728,
-    'picture_url': 'https://a0.muscache.com/im/pictures/user/2cfba405-b621-42b6-8d58-4bf53055f5e2.jpg?aki_policy=profile_x_medium',
-    'smart_name': 'Patricia &amp; Thierry',
-    'thumbnail_url': 'https://a0.muscache.com/im/pictures/user/2cfba405-b621-42b6-8d58-4bf53055f5e2.jpg?aki_policy=profile_small'},
-   'response': '',
-   'role': 'guest',
-   'language': 'fr',
-   'user_flag': None,
-   'created_at__dt': datetime.datetime(2021, 3, 20, 12, 59, 2, tzinfo=tzutc())},
-  {'author': {'first_name': 'Hélène',
-    'has_profile_pic': True,
-    'id': 76814860,
-    'picture_url': 'https://a0.muscache.com/im/pictures/user/95109087-2760-4977-af7b-643eac2e69b4.jpg?aki_policy=profile_x_medium',
-    'smart_name': 'Hélène',
-    'thumbnail_url': 'https://a0.muscache.com/im/pictures/user/95109087-2760-4977-af7b-643eac2e69b4.jpg?aki_policy=profile_small'},
-   'author_id': 76814860,
-   'can_be_edited': False,
-   'comments': 'Logement correct. Il est idéalement situé. Rue piétonne avec tous commerces à 5 min. Résidence très calme. La vue du Mont Blanc et aiguille du midi depuis le balcon est magnifique.',
-   'created_at': '2021-03-13T13:53:02Z',
-   'id': 738497725,
-   'id_str': '738497725',
-   'listing_id': 36902451,
-   'recipient_id': 251507728,
-   'collection_tag': None,
-   'listing': {'id': 36902451,
-    'listing_id_str': '36902451',
-    'name': 'Duplex spacieux et lumineux au centre de Chamonix'},
-   'rating': 4,
-   'recipient': {'first_name': 'Patricia &amp; Thierry',
-    'has_profile_pic': True,
-    'id': 251507728,
-    'picture_url': 'https://a0.muscache.com/im/pictures/user/2cfba405-b621-42b6-8d58-4bf53055f5e2.jpg?aki_policy=profile_x_medium',
-    'smart_name': 'Patricia &amp; Thierry',
-    'thumbnail_url': 'https://a0.muscache.com/im/pictures/user/2cfba405-b621-42b6-8d58-4bf53055f5e2.jpg?aki_policy=profile_small'},
-   'response': '',
-   'role': 'guest',
-   'language': 'fr',
-   'user_flag': None,
-   'created_at__dt': datetime.datetime(2021, 3, 13, 13, 53, 2, tzinfo=tzutc())},
-  {'author': {'first_name': 'Sarah',
-    'has_profile_pic': False,
-    'id': 140066313,
-    'picture_url': 'https://a0.muscache.com/defaults/user_pic-225x225.png?v=3',
-    'smart_name': 'Sarah',
-    'thumbnail_url': 'https://a0.muscache.com/defaults/user_pic-50x50.png?v=3'},
-   'author_id': 140066313,
-   'can_be_edited': False,
-   'comments': 'Conforme à la description \nAppartement et hôtes agréables, bel emplacement',
-   'created_at': '2021-02-27T14:17:39Z',
-   'id': 734709492,
-   'id_str': '734709492',
-   'listing_id': 36902451,
-   'recipient_id': 251507728,
-   'collection_tag': None,
-   'listing': {'id': 36902451,
-    'listing_id_str': '36902451',
-    'name': 'Duplex spacieux et lumineux au centre de Chamonix'},
-   'rating': 5,
-   'recipient': {'first_name': 'Patricia &amp; Thierry',
-    'has_profile_pic': True,
-    'id': 251507728,
-    'picture_url': 'https://a0.muscache.com/im/pictures/user/2cfba405-b621-42b6-8d58-4bf53055f5e2.jpg?aki_policy=profile_x_medium',
-    'smart_name': 'Patricia &amp; Thierry',
-    'thumbnail_url': 'https://a0.muscache.com/im/pictures/user/2cfba405-b621-42b6-8d58-4bf53055f5e2.jpg?aki_policy=profile_small'},
-   'response': '',
-   'role': 'guest',
-   'language': 'fr',
-   'user_flag': None,
-   'created_at__dt': datetime.datetime(2021, 2, 27, 14, 17, 39, tzinfo=tzutc())},
-  {'author': {'first_name': 'Anne',
-    'has_profile_pic': True,
-    'id': 102697326,
-    'picture_url': 'https://a0.muscache.com/im/pictures/user/a3cc14bc-4011-461d-b371-05ccef564024.jpg?aki_policy=profile_x_medium',
-    'smart_name': 'Anne',
-    'thumbnail_url': 'https://a0.muscache.com/im/pictures/user/a3cc14bc-4011-461d-b371-05ccef564024.jpg?aki_policy=profile_small'},
-   'author_id': 102697326,
-   'can_be_edited': False,
-   'comments': 'L’appartement de Patricia et Thierry nous a beaucoup plu ! Il est idéalement situé à 5min à pied du centre ville et de la gare Chamonix Aiguille du midi. Il est très propre, la cuisine est bien équipée et l’étage pour le coin nuit avec sdb est très apprécié. Et quelle vue sur le massif du Mont Blanc !! \nNous remercions Thierry pour sa réactivité. \nNous reviendrons sans hésiter en hiver comme en été!',
-   'created_at': '2021-02-21T14:15:02Z',
-   'id': 733162436,
-   'id_str': '733162436',
-   'listing_id': 36902451,
-   'recipient_id': 251507728,
-   'collection_tag': None,
-   'listing': {'id': 36902451,
-    'listing_id_str': '36902451',
-    'name': 'Duplex spacieux et lumineux au centre de Chamonix'},
-   'rating': 5,
-   'recipient': {'first_name': 'Patricia &amp; Thierry',
-    'has_profile_pic': True,
-    'id': 251507728,
-    'picture_url': 'https://a0.muscache.com/im/pictures/user/2cfba405-b621-42b6-8d58-4bf53055f5e2.jpg?aki_policy=profile_x_medium',
-    'smart_name': 'Patricia &amp; Thierry',
-    'thumbnail_url': 'https://a0.muscache.com/im/pictures/user/2cfba405-b621-42b6-8d58-4bf53055f5e2.jpg?aki_policy=profile_small'},
-   'response': '',
-   'role': 'guest',
-   'language': 'fr',
-   'user_flag': None,
-   'created_at__dt': datetime.datetime(2021, 2, 21, 14, 15, 2, tzinfo=tzutc())},
-  {'author': {'first_name': 'Philippe',
-    'has_profile_pic': False,
-    'id': 69221950,
-    'picture_url': 'https://a0.muscache.com/defaults/user_pic-225x225.png?v=3',
-    'smart_name': 'Philippe',
-    'thumbnail_url': 'https://a0.muscache.com/defaults/user_pic-50x50.png?v=3'},
-   'author_id': 69221950,
-   'can_be_edited': False,
-   'comments': 'Patricia très sympathique accueillante et disponible.  Appartement correspondant à la description faite.  Neuf, très propre décoration de bon goût. Vue sur le Mont Blanc, avec un parking en sous-sol apprécié. Je le recommande.',
-   'created_at': '2021-01-30T14:30:16Z',
-   'id': 727631522,
-   'id_str': '727631522',
-   'listing_id': 36902451,
-   'recipient_id': 251507728,
-   'collection_tag': None,
-   'listing': {'id': 36902451,
-    'listing_id_str': '36902451',
-    'name': 'Duplex spacieux et lumineux au centre de Chamonix'},
-   'rating': 5,
-   'recipient': {'first_name': 'Patricia &amp; Thierry',
-    'has_profile_pic': True,
-    'id': 251507728,
-    'picture_url': 'https://a0.muscache.com/im/pictures/user/2cfba405-b621-42b6-8d58-4bf53055f5e2.jpg?aki_policy=profile_x_medium',
-    'smart_name': 'Patricia &amp; Thierry',
-    'thumbnail_url': 'https://a0.muscache.com/im/pictures/user/2cfba405-b621-42b6-8d58-4bf53055f5e2.jpg?aki_policy=profile_small'},
-   'response': '',
-   'role': 'guest',
-   'language': 'fr',
-   'user_flag': None,
-   'created_at__dt': datetime.datetime(2021, 1, 30, 14, 30, 16, tzinfo=tzutc())},
-  {'author': {'first_name': 'Julien',
-    'has_profile_pic': True,
-    'id': 52314839,
-    'picture_url': 'https://a0.muscache.com/im/pictures/user/144d0a70-1778-4835-9d7f-32205a319465.jpg?aki_policy=profile_x_medium',
-    'smart_name': 'Julien',
-    'thumbnail_url': 'https://a0.muscache.com/im/pictures/user/144d0a70-1778-4835-9d7f-32205a319465.jpg?aki_policy=profile_small'},
-   'author_id': 52314839,
-   'can_be_edited': False,
-   'comments': 'N hésitez pas une seule seconde vous serez très bien reçu chez Patricia et Thierry.\nUn accueil vraiment très chaleureux.\nLe logement est très propre et extrêmement bien placé !!! \nSi vous devez venir sur Chamonix c est l appartement parfait.',
-   'created_at': '2021-01-23T12:25:36Z',
-   'id': 726110604,
-   'id_str': '726110604',
-   'listing_id': 36902451,
-   'recipient_id': 251507728,
-   'collection_tag': None,
-   'listing': {'id': 36902451,
-    'listing_id_str': '36902451',
-    'name': 'Duplex spacieux et lumineux au centre de Chamonix'},
-   'rating': 5,
-   'recipient': {'first_name': 'Patricia &amp; Thierry',
-    'has_profile_pic': True,
-    'id': 251507728,
-    'picture_url': 'https://a0.muscache.com/im/pictures/user/2cfba405-b621-42b6-8d58-4bf53055f5e2.jpg?aki_policy=profile_x_medium',
-    'smart_name': 'Patricia &amp; Thierry',
-    'thumbnail_url': 'https://a0.muscache.com/im/pictures/user/2cfba405-b621-42b6-8d58-4bf53055f5e2.jpg?aki_policy=profile_small'},
-   'response': '',
-   'role': 'guest',
-   'language': 'fr',
-   'user_flag': None,
-   'created_at__dt': datetime.datetime(2021, 1, 23, 12, 25, 36, tzinfo=tzutc())},
-  {'author': {'first_name': 'Mohamed',
-    'has_profile_pic': True,
-    'id': 194410942,
-    'picture_url': 'https://a0.muscache.com/im/pictures/user/bffb8790-29d6-4bb9-bc36-2e6b76b1d48e.jpg?aki_policy=profile_x_medium',
-    'smart_name': 'Mohamed',
-    'thumbnail_url': 'https://a0.muscache.com/im/pictures/user/bffb8790-29d6-4bb9-bc36-2e6b76b1d48e.jpg?aki_policy=profile_small'},
-   'author_id': 194410942,
-   'can_be_edited': False,
-   'comments': "Situé face à ce que la nature peut vous offrir de plus beau (le Mont-blanc), cet appartement chaleureux m'a permis un dépaysement total. Proche de toutes commodités (transport, commerce...), mon véhicule a lui aussi, profité de l'abri du garage souterrain  pendant tout le séjour.  Concernant mon accueil, celui-ci  était au top. Patricia et Thierry ont su m'accueillir chaleureusement et prendre le temps de tout m'expliquer. C'est un couple disponible avec une grande gentillesse.  L'appartement est confortable  et on se lasse jamais de cette vue en prenant son café le matin. Encore merci !!!",
-   'created_at': '2021-01-09T14:22:32Z',
-   'id': 722964305,
-   'id_str': '722964305',
-   'listing_id': 36902451,
-   'recipient_id': 251507728,
-   'collection_tag': None,
-   'listing': {'id': 36902451,
-    'listing_id_str': '36902451',
-    'name': 'Duplex spacieux et lumineux au centre de Chamonix'},
-   'rating': 5,
-   'recipient': {'first_name': 'Patricia &amp; Thierry',
-    'has_profile_pic': True,
-    'id': 251507728,
-    'picture_url': 'https://a0.muscache.com/im/pictures/user/2cfba405-b621-42b6-8d58-4bf53055f5e2.jpg?aki_policy=profile_x_medium',
-    'smart_name': 'Patricia &amp; Thierry',
-    'thumbnail_url': 'https://a0.muscache.com/im/pictures/user/2cfba405-b621-42b6-8d58-4bf53055f5e2.jpg?aki_policy=profile_small'},
-   'response': '',
-   'role': 'guest',
-   'language': 'fr',
-   'user_flag': None,
-   'created_at__dt': datetime.datetime(2021, 1, 9, 14, 22, 32, tzinfo=tzutc())},
-  {'author': {'first_name': 'Amandine',
-    'has_profile_pic': True,
-    'id': 66366222,
-    'picture_url': 'https://a0.muscache.com/im/pictures/user/5fe7cb73-ffc5-4e27-ab9f-1892ad0bcc17.jpg?aki_policy=profile_x_medium',
-    'smart_name': 'Amandine',
-    'thumbnail_url': 'https://a0.muscache.com/im/pictures/user/5fe7cb73-ffc5-4e27-ab9f-1892ad0bcc17.jpg?aki_policy=profile_small'},
-   'author_id': 66366222,
-   'can_be_edited': False,
-   'comments': 'Super appartement conforme à l’annonce avec une superbe vue ! \nUn accueil chaleureux de Patricia et Thierry, bref un super séjour !',
-   'created_at': '2021-01-02T13:09:00Z',
-   'id': 720744152,
-   'id_str': '720744152',
-   'listing_id': 36902451,
-   'recipient_id': 251507728,
-   'collection_tag': None,
-   'listing': {'id': 36902451,
-    'listing_id_str': '36902451',
-    'name': 'Duplex spacieux et lumineux au centre de Chamonix'},
-   'rating': 5,
-   'recipient': {'first_name': 'Patricia &amp; Thierry',
-    'has_profile_pic': True,
-    'id': 251507728,
-    'picture_url': 'https://a0.muscache.com/im/pictures/user/2cfba405-b621-42b6-8d58-4bf53055f5e2.jpg?aki_policy=profile_x_medium',
-    'smart_name': 'Patricia &amp; Thierry',
-    'thumbnail_url': 'https://a0.muscache.com/im/pictures/user/2cfba405-b621-42b6-8d58-4bf53055f5e2.jpg?aki_policy=profile_small'},
-   'response': '',
-   'role': 'guest',
-   'language': 'fr',
-   'user_flag': None,
-   'created_at__dt': datetime.datetime(2021, 1, 2, 13, 9, tzinfo=tzutc())},
-  {'author': {'first_name': 'Ally',
-    'has_profile_pic': True,
-    'id': 11287096,
-    'picture_url': 'https://a0.muscache.com/im/users/11287096/profile_pic/1442131015/original.jpg?aki_policy=profile_x_medium',
-    'smart_name': 'Ally',
-    'thumbnail_url': 'https://a0.muscache.com/im/users/11287096/profile_pic/1442131015/original.jpg?aki_policy=profile_small'},
-   'author_id': 11287096,
-   'can_be_edited': False,
-   'comments': "Excellent place to spend my first month in Chamonix; Patricia and Thierry were extremely helpful and responsive; the apartment is as described; the location is excellent; the view from the balcony is stunning; everything is clean and works properly; internet was fine for work video-conferences, etc; I couldn't have been happier with this choice :-)",
-   'created_at': '2020-11-18T13:48:57Z',
-   'id': 709710631,
-   'id_str': '709710631',
-   'listing_id': 36902451,
-   'recipient_id': 251507728,
-   'collection_tag': None,
-   'listing': {'id': 36902451,
-    'listing_id_str': '36902451',
-    'name': 'Duplex spacieux et lumineux au centre de Chamonix'},
-   'rating': 5,
-   'recipient': {'first_name': 'Patricia &amp; Thierry',
-    'has_profile_pic': True,
-    'id': 251507728,
-    'picture_url': 'https://a0.muscache.com/im/pictures/user/2cfba405-b621-42b6-8d58-4bf53055f5e2.jpg?aki_policy=profile_x_medium',
-    'smart_name': 'Patricia &amp; Thierry',
-    'thumbnail_url': 'https://a0.muscache.com/im/pictures/user/2cfba405-b621-42b6-8d58-4bf53055f5e2.jpg?aki_policy=profile_small'},
-   'response': '',
-   'role': 'guest',
-   'language': 'en',
-   'user_flag': None,
-   'created_at__dt': datetime.datetime(2020, 11, 18, 13, 48, 57, tzinfo=tzutc())}]}</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-    
-
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Publishing-data-as-a-webservice">
 <a class="anchor" href="#Publishing-data-as-a-webservice" aria-hidden="true"><span class="octicon octicon-link"></span></a>Publishing data as a webservice<a class="anchor-link" href="#Publishing-data-as-a-webservice"> </a>
 </h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>With <code>flask</code> you can bind a class to a webservice endpoint by deriving a class from the <code>Resouce</code> base class and providing codes for each supported verb (<code>get</code>, <code>post</code>, etc.). Let's define a basic endpoint that will only be used as a simple <code>/info</code> heartbeat check.</p>
+
 </div>
 </div>
 </div>
@@ -853,6 +468,14 @@ window.onload = wrap_img;
 </div>
     
 
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We can define the <code>application</code> as well as a default <code>/info</code> endpoint this way:</p>
+
+</div>
+</div>
+</div>
     
     
 <div class="cell border-box-sizing code_cell rendered">
@@ -860,24 +483,133 @@ window.onload = wrap_img;
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="k">class</span> <span class="nc">Hosting</span><span class="p">(</span><span class="n">flr</span><span class="o">.</span><span class="n">Resource</span><span class="p">):</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">configure_api</span><span class="p">():</span>
 
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="n">app</span> <span class="o">=</span> <span class="n">fl</span><span class="o">.</span><span class="n">Flask</span><span class="p">(</span><span class="s1">'apps'</span><span class="p">)</span>
+    <span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">'BUNDLE_ERRORS'</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
 
-        <span class="nb">print</span><span class="p">(</span><span class="s1">'__init__ for model "</span><span class="si">{0}</span><span class="s1">"'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">kwargs</span><span class="p">[</span><span class="s1">'model_id'</span><span class="p">]))</span>
+    <span class="n">csrf</span> <span class="o">=</span> <span class="n">flwc</span><span class="o">.</span><span class="n">CSRFProtect</span><span class="p">()</span>
+    <span class="n">csrf</span><span class="o">.</span><span class="n">init_app</span><span class="p">(</span><span class="n">app</span><span class="p">)</span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">model</span> <span class="o">=</span> <span class="n">Statics</span><span class="o">.</span><span class="n">g_models</span><span class="p">[</span><span class="n">kwargs</span><span class="p">[</span><span class="s1">'model_id'</span><span class="p">]][</span><span class="s1">'model'</span><span class="p">]</span>
+    <span class="n">cors</span> <span class="o">=</span> <span class="n">flc</span><span class="o">.</span><span class="n">CORS</span><span class="p">(</span>
+        <span class="n">app</span><span class="p">,</span> 
+        <span class="n">resources</span><span class="o">=</span><span class="p">{</span>
+            <span class="sa">r</span><span class="s1">'/*'</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s1">'origins'</span><span class="p">:</span> <span class="s1">'*'</span><span class="p">,</span> 
+                <span class="s1">'send_wildcard'</span><span class="p">:</span> <span class="s1">'False'</span>
+            <span class="p">}</span>
+        <span class="p">})</span>
+
+    <span class="n">api</span> <span class="o">=</span> <span class="n">flr</span><span class="o">.</span><span class="n">Api</span><span class="p">(</span>
+        <span class="n">app</span><span class="o">=</span><span class="n">app</span><span class="p">,</span>
+        <span class="n">catch_all_404s</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="n">api</span><span class="o">.</span><span class="n">add_resource</span><span class="p">(</span>
+        <span class="n">Info</span><span class="p">,</span> 
+        <span class="s1">'/info'</span><span class="p">,</span>
+        <span class="n">endpoint</span><span class="o">=</span><span class="s1">'info'</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="p">{</span>
+        <span class="s1">'app'</span><span class="p">:</span> <span class="n">app</span><span class="p">,</span> 
+        <span class="s1">'csrf'</span><span class="p">:</span> <span class="n">csrf</span><span class="p">,</span> 
+        <span class="s1">'cors'</span><span class="p">:</span> <span class="n">cors</span><span class="p">,</span> 
+        <span class="s1">'api'</span><span class="p">:</span> <span class="n">api</span>
+    <span class="p">}</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Let's create the application components:</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">webservice_app</span> <span class="o">=</span> <span class="n">configure_api</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Let's create an endpoint for the <strong>Airbnb</strong> data.</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">class</span> <span class="nc">AirbnbRating</span><span class="p">(</span><span class="n">flr</span><span class="o">.</span><span class="n">Resource</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
         <span class="bp">self</span><span class="o">.</span><span class="n">reqparse</span> <span class="o">=</span> <span class="n">flr_r</span><span class="o">.</span><span class="n">RequestParser</span><span class="p">()</span>
 
-        <span class="k">for</span> <span class="n">feature</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">input_features</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">reqparse</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span>
-                <span class="n">feature</span><span class="o">.</span><span class="n">feature_name</span><span class="p">,</span>
-                <span class="nb">type</span><span class="o">=</span><span class="nb">str</span><span class="p">,</span>
-                <span class="n">location</span><span class="o">=</span><span class="s1">'json'</span><span class="p">,</span>
-                <span class="n">required</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-                <span class="n">help</span><span class="o">=</span><span class="s1">'"'</span><span class="o">+</span> <span class="n">feature</span><span class="o">.</span><span class="n">feature_name</span> <span class="o">+</span><span class="s1">'" is mandatory (</span><span class="si">{error_msg}</span><span class="s1">)'</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">reqparse</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span>
+            <span class="s1">'listing_id'</span><span class="p">,</span>
+            <span class="nb">type</span><span class="o">=</span><span class="nb">int</span><span class="p">,</span>
+            <span class="n">location</span><span class="o">=</span><span class="s1">'json'</span><span class="p">,</span>
+            <span class="n">required</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+            <span class="n">help</span><span class="o">=</span><span class="s1">'"listing_id" is mandatory (</span><span class="si">{error_msg}</span><span class="s1">)'</span><span class="p">)</span>
 
-        <span class="nb">super</span><span class="p">(</span><span class="n">Hosting</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">reqparse</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span>
+            <span class="s1">'locale'</span><span class="p">,</span>
+            <span class="nb">type</span><span class="o">=</span><span class="nb">str</span><span class="p">,</span>
+            <span class="n">default</span><span class="o">=</span><span class="s1">'fr'</span><span class="p">,</span>
+            <span class="n">location</span><span class="o">=</span><span class="s1">'json'</span><span class="p">,</span>
+            <span class="n">required</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+            <span class="n">help</span><span class="o">=</span><span class="s1">'"locale" error (</span><span class="si">{error_msg}</span><span class="s1">)'</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">reqparse</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span>
+            <span class="s1">'keep_n_reviews'</span><span class="p">,</span>
+            <span class="nb">type</span><span class="o">=</span><span class="nb">int</span><span class="p">,</span>
+            <span class="n">default</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+            <span class="n">location</span><span class="o">=</span><span class="s1">'json'</span><span class="p">,</span>
+            <span class="n">required</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+            <span class="n">help</span><span class="o">=</span><span class="s1">'"keep_n_reviews" error (</span><span class="si">{error_msg}</span><span class="s1">)'</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">reqparse</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span>
+            <span class="s1">'min_rating'</span><span class="p">,</span>
+            <span class="nb">type</span><span class="o">=</span><span class="nb">int</span><span class="p">,</span>
+            <span class="n">default</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+            <span class="n">location</span><span class="o">=</span><span class="s1">'json'</span><span class="p">,</span>
+            <span class="n">required</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+            <span class="n">help</span><span class="o">=</span><span class="s1">'"min_rating" error (</span><span class="si">{error_msg}</span><span class="s1">)'</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">reqparse</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span>
+            <span class="s1">'most_recent_first'</span><span class="p">,</span>
+            <span class="nb">type</span><span class="o">=</span><span class="nb">bool</span><span class="p">,</span>
+            <span class="n">default</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+            <span class="n">location</span><span class="o">=</span><span class="s1">'json'</span><span class="p">,</span>
+            <span class="n">required</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+            <span class="n">help</span><span class="o">=</span><span class="s1">'"most_recent_first" error (</span><span class="si">{error_msg}</span><span class="s1">)'</span><span class="p">)</span>
+    
+        <span class="nb">super</span><span class="p">(</span><span class="n">AirbnbRating</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
 
     <span class="k">def</span> <span class="nf">post</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 
@@ -889,13 +621,12 @@ window.onload = wrap_img;
         <span class="k">try</span><span class="p">:</span>
             <span class="n">args</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">reqparse</span><span class="o">.</span><span class="n">parse_args</span><span class="p">()</span>
             
-            <span class="n">data</span> <span class="o">=</span> <span class="p">{}</span>
-
-            <span class="k">for</span> <span class="n">feature</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">input_features</span><span class="p">:</span>
-                <span class="n">data</span><span class="p">[</span><span class="n">feature</span><span class="o">.</span><span class="n">feature_name</span><span class="p">]</span> <span class="o">=</span> <span class="n">args</span><span class="p">[</span><span class="n">feature</span><span class="o">.</span><span class="n">feature_name</span><span class="p">]</span>
-
-            <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span>
-                <span class="nb">input</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
+            <span class="n">result</span> <span class="o">=</span> <span class="n">get_ratings</span><span class="p">(</span>
+                <span class="n">listing_id</span><span class="o">=</span><span class="n">args</span><span class="p">[</span><span class="s1">'listing_id'</span><span class="p">],</span> 
+                <span class="n">locale</span><span class="o">=</span><span class="n">args</span><span class="p">[</span><span class="s1">'locale'</span><span class="p">],</span>
+                <span class="n">keep_n_reviews</span><span class="o">=</span><span class="n">args</span><span class="p">[</span><span class="s1">'keep_n_reviews'</span><span class="p">],</span> 
+                <span class="n">min_rating</span><span class="o">=</span><span class="n">args</span><span class="p">[</span><span class="s1">'min_rating'</span><span class="p">],</span>
+                <span class="n">most_recent_first</span><span class="o">=</span><span class="n">args</span><span class="p">[</span><span class="s1">'most_recent_first'</span><span class="p">])</span>
 
             <span class="n">success</span> <span class="o">=</span> <span class="kc">True</span>
 
@@ -918,6 +649,111 @@ window.onload = wrap_img;
 </div>
     
 
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We can add this new endpoint:</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">webservice_app</span><span class="p">[</span><span class="s1">'api'</span><span class="p">]</span><span class="o">.</span><span class="n">add_resource</span><span class="p">(</span>
+    <span class="n">AirbnbRating</span><span class="p">,</span> 
+    <span class="s1">'/rating'</span><span class="p">,</span>
+    <span class="n">endpoint</span><span class="o">=</span><span class="s1">'rating'</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Let's start the webservice</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">webservice_app</span><span class="p">[</span><span class="s1">'app'</span><span class="p">]</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
+    <span class="n">host</span><span class="o">=</span><span class="s1">'0.0.0.0'</span><span class="p">,</span>
+    <span class="n">port</span><span class="o">=</span><span class="mi">1234</span><span class="p">,</span>
+    <span class="n">debug</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre> * Serving Flask app 'apps' (lazy loading)
+ * Environment: production
+   WARNING: This is a development server. Do not use it in a production deployment.
+   Use a production WSGI server instead.
+ * Debug mode: off
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stderr output_text">
+<pre> * Running on all addresses.
+   WARNING: This is a development server. Do not use it in a production deployment.
+ * Running on http://192.168.0.19:1234/ (Press CTRL+C to quit)
+192.168.0.19 - - [08/Jun/2021 15:31:23] "GET / HTTP/1.1" 404 -
+192.168.0.19 - - [08/Jun/2021 15:31:23] "GET /favicon.ico HTTP/1.1" 404 -
+192.168.0.19 - - [08/Jun/2021 15:31:29] "GET /info HTTP/1.1" 200 -
+127.0.0.1 - - [08/Jun/2021 15:31:49] "GET /info HTTP/1.1" 200 -
+127.0.0.1 - - [08/Jun/2021 15:31:50] "GET /favicon.ico HTTP/1.1" 404 -
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We can navigate to the info endpoint and verify the webservice is doing what we need:</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><img src="/blog/images/copied_from_nb/./images/info-endpoint.png" alt=""></p>
+
+</div>
+</div>
+</div>
 </div>
 
 
