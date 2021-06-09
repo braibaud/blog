@@ -112,7 +112,7 @@ window.onload = wrap_img;
         
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="About">About<a class="anchor-link" href="#About"> </a></h1><p>We are going to pull data from a webservice, transform it and serve it back via a webservice.</p>
+<h1 id="About">About<a class="anchor-link" href="#About"> </a></h1><p>Here is a description of my preferred way of working with <strong>Jupyter</strong> (being either <strong>Notebook</strong> or <strong>Lab</strong>). The plan is to basically keep the <strong>Jupyter</strong> installation within the <code>base</code> environment. Each additional virtual environment is then exposed via an <code>IPython</code> kernel and used via <strong>Jupyter</strong>.</p>
 <p><img src="/blog/images/copied_from_nb/./images/2021-06-08-using-conda-environments-the-right-way-main.jpg" alt="" title="Photo by Andrea Davis" /></p>
 
 </div>
@@ -145,6 +145,9 @@ window.onload = wrap_img;
 <li>create a notebook kernel connected with the conda environment just created.<blockquote><p><code>python -m ipykernel install --user --name data-science-env --display-name data-science-env-kernel</code></p>
 </blockquote>
 </li>
+</ol>
+<p><img src="/blog/images/copied_from_nb/./images/create-ipython-kernel.jpg" alt="" /></p>
+<ol>
 <li>use the <code>base</code> environment to start <code>jupyter-notebook</code> or <code>jupyter-lab</code>.<blockquote><p>You should find a kernel named <code>data-science-env-kernel</code>.</p>
 </blockquote>
 </li>
