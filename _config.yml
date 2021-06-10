@@ -58,7 +58,7 @@ annotations: false
 show_tags: true
 
 # Add your Google Analytics ID here if you have one and want to use it
-google_analytics: 
+google_analytics: G-P8P7M6F4QL
 
 # Commenting on blog posts is powered by Utterances, an open-source and ad-free way of implementing comments. 
 # All comments are stored in issues on your blog's GitHub repo. You can turn this on setting comments to true. 
